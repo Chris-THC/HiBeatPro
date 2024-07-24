@@ -1,22 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { Button, View } from 'react-native';
+import Animated, { useSharedValue } from 'react-native-reanimated';
 
-const App = () => {
+export default function App() {
+  const width = useSharedValue(100);
+
+  const handlePress = () => {
+    width.value = width.value + 50;
+  };
+
   return (
-    <View style={styles.cotainer}>
-      <Text>App</Text>
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <Animated.View
+        style={{
+          width,
+          height: 100,
+          backgroundColor: 'violet',
+        }}
+      />
+      <Button onPress={handlePress} title="Click me" />
     </View>
   );
-};
-
-export default App;
-
-const styles = StyleSheet.create({
-  cotainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#000',
-  },
-});
+}
