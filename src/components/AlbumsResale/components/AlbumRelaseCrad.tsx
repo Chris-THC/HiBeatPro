@@ -1,15 +1,15 @@
-import RNBounceable from '@freakycoder/react-native-bounceable';
 import React, {useEffect, useState} from 'react';
+import RNBounceable from '@freakycoder/react-native-bounceable';
 import {Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {AlbumRelaseInterface} from '../../../interfaces/AlbumsRelase/AlbumsRelase';
-import {AndroidColors} from '../../../interfaces/colorsInterface/Colors';
-import {ImageColorPalette} from '../../../utils/colors/ColorsFromImg';
 import styles from '../styles/AlbReleasedCrad';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../types/screenStack';
-import { useAlbumStore } from '../../../store/albumStore/albumStore';
+import { AlbumRelaseInterface } from 'interfaces/AlbumsRelase/AlbumsRelase';
+import { AndroidColors } from 'interfaces/colorsInterface/Colors';
+import { ImageColorPalette } from 'utils/colors/ColorsFromImg';
+import { useAlbumStore } from 'store/albumStore/albumStore';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
 
 interface ArtistCard {
   albumRealseInfo: AlbumRelaseInterface;

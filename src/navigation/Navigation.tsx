@@ -1,22 +1,22 @@
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,
   TransitionSpecs,
   createStackNavigator,
 } from '@react-navigation/stack';
-import React from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {Album} from '../screens/album/Album';
-import {AlbumsList} from '../screens/albumsList/AlbumsList';
-import {Artist} from '../screens/artist/Artist';
-import {Home} from '../screens/home/Home';
-import {Player} from '../screens/player/Player';
-import {Playlist} from '../screens/playlist/Playlist';
-import {RandomPlayListStack} from '../screens/randomPlaylist/RandomPlaylistStack';
-import {Search} from '../screens/search/Search';
-import {StackPlayer} from '../screens/stack/StackPlayer';
-import {RootStackParamList} from '../types/screenStack';
-import {AlbumRealce} from '../screens/AlbumRealce/AlbumRealce';
+import {AlbumRealce} from 'screens/AlbumRealce/AlbumRealce';
+import {Album} from 'screens/album/Album';
+import {AlbumsList} from 'screens/albumsList/AlbumsList';
+import {Artist} from 'screens/artist/Artist';
+import {Home} from 'screens/home/Home';
+import {Player} from 'screens/player/Player';
+import {Playlist} from 'screens/playlist/Playlist';
+import {RandomPlayListStack} from 'screens/randomPlaylist/RandomPlaylistStack';
+import {Search} from 'screens/search/Search';
+import {StackPlayer} from 'screens/stack/StackPlayer';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

@@ -2,15 +2,15 @@ import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
+import { colorBase } from 'enums/AppColors';
+import { AlbumSearch } from 'interfaces/AlbumSearch/AlbumSearch';
+import { AndroidColors } from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {colorBase} from '../../../enums/AppColors';
-import {AndroidColors} from '../../../interfaces/colorsInterface/Colors';
-import {useAlbumStore} from '../../../store/albumStore/albumStore';
-import {RootStackParamList} from '../../../types/screenStack';
-import {ImageColorPalette} from '../../../utils/colors/ColorsFromImg';
-import { AlbumSearch } from '../../../interfaces/AlbumSearch/AlbumSearch';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
+import { useAlbumStore } from 'store/albumStore/albumStore';
+import { ImageColorPalette } from 'utils/colors/ColorsFromImg';
 
 interface PropArtist {
   albumArray: AlbumSearch[];

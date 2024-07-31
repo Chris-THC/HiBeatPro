@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {AlbumStreaming} from '../../interfaces/AlbumSearch/AlbumStreaming';
+import { AlbumStreaming } from 'interfaces/AlbumSearch/AlbumStreaming';
 
 export const streamingAlbumByPlaylistId = async (idPlaylist: string, imgCover: string,): Promise<AlbumStreaming[] | null> => {
   try {

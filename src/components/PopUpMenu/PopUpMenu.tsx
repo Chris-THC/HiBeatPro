@@ -1,6 +1,5 @@
 import React from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-
 import {MenuView} from '@react-native-menu/menu';
 
 export const PopUpMenu = () => {

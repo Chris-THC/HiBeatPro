@@ -1,14 +1,14 @@
+import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
+import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
+import {colorBase} from 'enums/AppColors';
+import {useStreamingAlbum} from 'hooks/UseAlbum/UseAlbum';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, View, Text} from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {ActiveTrackCrad} from '../../components/ActiveTrackCrad/ActiveTrackCrad';
-import {StatusUpBar} from '../../components/StatusBar/StatusUpBar';
-import {colorBase} from '../../enums/AppColors';
-import {useStreamingAlbum} from '../../hooks/UseAlbum/UseAlbum';
-import {AndroidColors} from '../../interfaces/colorsInterface/Colors';
-import {useAlbumStore} from '../../store/albumStore/albumStore';
-import {ImageColorPalette} from '../../utils/colors/ColorsFromImg';
-import {getThumbnailUrl} from '../../utils/selectImage/SelectImage';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 import {AlbumHeaderRealce} from './components/AlbumHeaderRealce';
 import {TrackListByAlbumRealce} from './components/TrackListRealce';
 

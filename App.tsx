@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {colorBase} from './src/enums/AppColors';
-import Navigation from './src/navigation/Navigation';
-import {SetupPlayer} from './src/services/TrackPlayerService/SetupPlayer';
+import {StyleSheet, Text, View} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import {StatusUpBar} from './src/components/StatusBar/StatusUpBar';
+import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
+import {colorBase} from 'enums/AppColors';
+import Navigation from 'navigation/Navigation';
+import {SetupPlayer} from 'services/TrackPlayerService/SetupPlayer';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState<any>(true);

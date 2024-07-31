@@ -1,7 +1,7 @@
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
 import axios from 'axios';
-import {YTMusicKey} from '../../enums/Enums';
-import {RandomPlaylistInterface} from '../../interfaces/randomPlayList/RandomPlaylist';
+import { YTMusicKey } from 'enums/Enums';
+import { RandomPlaylistInterface } from 'interfaces/randomPlayList/RandomPlaylist';
 
 //Here we get all users list data
 export const randomPlaylistFuncion = async () => {

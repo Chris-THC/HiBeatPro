@@ -7,9 +7,9 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import TextTicker from 'react-native-text-ticker';
 import {useActiveTrack} from 'react-native-track-player';
-import {useIsTrackPlaying} from '../../services/TrackPlayerService/TrackPlayerStates';
-import {RootStackParamList} from '../../types/screenStack';
-import {togglePlayback} from '../../services/TrackPlayerService/TrackPlayerEvents';
+import { useIsTrackPlaying } from 'services/TrackPlayerService/TrackPlayerStates';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
+import { togglePlayback } from 'services/TrackPlayerService/TrackPlayerEvents';
 
 export const ActiveTrackCrad: React.FC = () => {
   const activeTrack = useActiveTrack();

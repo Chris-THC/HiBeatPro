@@ -1,7 +1,7 @@
+import { PlayerScreen } from 'components/PlayerComponents/view/PlayerScreen';
+import { colorBase } from 'enums/AppColors';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {colorBase} from '../../enums/AppColors';
-import {PlayerScreen} from '../../components/PlayerComponents/view/PlayerScreen';
+import {StyleSheet, View} from 'react-native';
 
 export const Player = () => {
   return (

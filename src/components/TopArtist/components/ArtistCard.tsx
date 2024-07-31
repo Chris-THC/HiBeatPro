@@ -1,15 +1,15 @@
-import RNBounceable from '@freakycoder/react-native-bounceable';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
+import RNBounceable from '@freakycoder/react-native-bounceable';
 import FastImage from 'react-native-fast-image';
-import {TopArtistInterface} from '../../../interfaces/TopArtistInterface/TopArtist';
-import {AndroidColors} from '../../../interfaces/colorsInterface/Colors';
-import {ImageColorPalette} from '../../../utils/colors/ColorsFromImg';
-import styles from './../styles/ArtistCard';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../types/screenStack';
-import {useArtistStore} from '../../../store/artistStore/artistStore';
+import {TopArtistInterface} from 'interfaces/TopArtistInterface/TopArtist';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useArtistStore} from 'store/artistStore/artistStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import styles from './../styles/ArtistCard';
 
 interface PropsArtistCard {
   artistInfo: TopArtistInterface;

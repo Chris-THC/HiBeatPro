@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colorBase} from '../../../enums/AppColors';
-import {useSearchStore} from '../../../store/searchStore/SearchStore';
-import {ArtistListSearch} from '../components/ArtistListSearch';
+import {StyleSheet, Text, View} from 'react-native';
+import { useSearchStore } from 'store/searchStore/SearchStore';
+import { ArtistListSearch } from '../components/ArtistListSearch';
+import { colorBase } from 'enums/AppColors';
 
 export const ArtistSearch = () => {
   const {artistList} = useSearchStore();

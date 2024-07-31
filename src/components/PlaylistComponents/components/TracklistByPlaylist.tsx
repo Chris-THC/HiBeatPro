@@ -1,14 +1,14 @@
+import React from 'react';
 import {Entypo} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {FlashList} from '@shopify/flash-list';
-import React from 'react';
+import {PublicPlaylist} from 'interfaces/PublicPlaylist/PublicPlaylist';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
-import {PublicPlaylist} from '../../../interfaces/PublicPlaylist/PublicPlaylist';
-import {handlerPlay} from '../../../services/TrackPlayerService/TrackPlayerEvents';
-import {getStreamingData} from '../../../services/streaming/StreamingTrack';
-import {getThumbnailUrl} from '../../../utils/selectImage/SelectImage';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 
 interface PropsTrackList {
   topSongs: PublicPlaylist[];

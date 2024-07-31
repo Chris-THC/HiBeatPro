@@ -1,7 +1,8 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
+import { ArtistDetailed } from 'interfaces/SerachInterface/ArtistDetails';
+import { SongDetailed } from 'interfaces/SerachInterface/SearchTracks';
 import YTMusic from 'ytmusic-api';
-import { ArtistDetailed } from '../../interfaces/SerachInterface/ArtistDetails';
-import { SongDetailed } from '../../interfaces/SerachInterface/SearchTracks';
+
 const ytmusic = new YTMusic();
 
 export const serachTracksFuntion = async (track: string): Promise<SongDetailed[]|any> => {

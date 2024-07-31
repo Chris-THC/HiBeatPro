@@ -1,21 +1,18 @@
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {FlashList} from '@shopify/flash-list';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-
 import {FontAwesome} from '@expo/vector-icons';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
+import {AlbumRelaseInterface} from 'interfaces/AlbumsRelase/AlbumsRelase';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 import styles from './StylesAlbumCard';
 
-import {AlbumRelaseInterface} from '../../../interfaces/AlbumsRelase/AlbumsRelase';
-import {AndroidColors} from '../../../interfaces/colorsInterface/Colors';
-import {useAlbumStore} from '../../../store/albumStore/albumStore';
-import {RootStackParamList} from '../../../types/screenStack';
-import {ImageColorPalette} from '../../../utils/colors/ColorsFromImg';
-import {getThumbnailUrl} from '../../../utils/selectImage/SelectImage';
 
 interface AlbumCradProp {
   album: AlbumRelaseInterface;
@@ -74,19 +71,3 @@ export const AlbumCardByRealce: React.FC<AlbumCradProp> = ({album}) => {
     </RNBounceable>
   );
 };
-
-// export const AlbumListCrad: React.FC<AlbumListProps> = ({topAlbums}) => {
-//   return (
-//     <View style={{minHeight: 250, width: 'auto'}}>
-//       <FlashList
-//         data={topAlbums}
-//         numColumns={1}
-//         horizontal={true}
-//         scrollEnabled={true}
-//         estimatedItemSize={10}
-//         showsVerticalScrollIndicator={false}
-//         renderItem={({item}) => <AlbumCard album={item} />}
-//       />
-//     </View>
-//   );
-// };

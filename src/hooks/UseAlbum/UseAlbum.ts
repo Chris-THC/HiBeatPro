@@ -1,6 +1,6 @@
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
-import {AlbumStreaming} from '../../interfaces/AlbumSearch/AlbumStreaming';
-import {streamingAlbumByPlaylistId} from '../UseStreamingAlbum/UseStreamingAlbum';
+import { streamingAlbumByPlaylistId } from 'hooks/UseStreamingAlbum/UseStreamingAlbum';
+import { AlbumStreaming } from 'interfaces/AlbumSearch/AlbumStreaming';
 
 const albumStreamingFunction = async (idPlaylist: string, imgCover: string): Promise<AlbumStreaming[] | null> => {
   try {

@@ -1,11 +1,9 @@
+import { AlbumRelaseInterface } from 'interfaces/AlbumsRelase/AlbumsRelase';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {AlbumSearch} from '../../../interfaces/AlbumSearch/AlbumSearch';
 import TextTicker from 'react-native-text-ticker';
-import {AlbumSummary} from '../../../interfaces/ArtistInterface/YTMuiscArtistInterface';
-import {getThumbnailUrl} from '../../../utils/selectImage/SelectImage';
-import { AlbumRelaseInterface } from '../../../interfaces/AlbumsRelase/AlbumsRelase';
+import { getThumbnailUrl } from 'utils/selectImage/SelectImage';
 
 interface PropArtist {
   albumInfoSelected: AlbumRelaseInterface;

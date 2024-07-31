@@ -1,15 +1,15 @@
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {FlashList} from '@shopify/flash-list';
+import {SimilarArtist} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/native-stack/types';
-import {SimilarArtist} from '../../../../interfaces/ArtistInterface/YTMuiscArtistInterface';
-import {AndroidColors} from '../../../../interfaces/colorsInterface/Colors';
-import {useArtistStore} from '../../../../store/artistStore/artistStore';
-import {RootStackParamList} from '../../../../types/screenStack';
-import {ImageColorPalette} from '../../../../utils/colors/ColorsFromImg';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useArtistStore} from 'store/artistStore/artistStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
 
 interface ArtistListProps {
   similarArtists: SimilarArtist[];
@@ -45,7 +45,9 @@ const SimilarArtistCard: React.FC<ArtistListPropsCard> = ({artistInfo}) => {
         style={[
           styles.artistContentInfo,
           {
-            backgroundColor: `${!colorTaget ? '#22242a' : colorTaget?.dominant}`,
+            backgroundColor: `${
+              !colorTaget ? '#22242a' : colorTaget?.dominant
+            }`,
           },
         ]}>
         <View style={styles.artistContentInfoContText}>

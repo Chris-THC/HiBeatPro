@@ -1,23 +1,27 @@
+import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
+import {AlbumHeader} from 'components/Album/components/AlbumHeader';
+import {TrackListByAlbum} from 'components/Album/components/TrackListByAlbum';
+import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
+import {colorBase} from 'enums/AppColors';
+import {useStreamingAlbum} from 'hooks/UseAlbum/UseAlbum';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {ActiveTrackCrad} from '../../components/ActiveTrackCrad/ActiveTrackCrad';
-import {AlbumHeader} from '../../components/Album/components/AlbumHeader';
-import {TrackListByAlbum} from '../../components/Album/components/TrackListByAlbum';
-import {StatusUpBar} from '../../components/StatusBar/StatusUpBar';
-import {colorBase} from '../../enums/AppColors';
-import {useStreamingAlbum} from '../../hooks/UseAlbum/UseAlbum';
-import {AndroidColors} from '../../interfaces/colorsInterface/Colors';
-import {useAlbumStore} from '../../store/albumStore/albumStore';
-import {ImageColorPalette} from '../../utils/colors/ColorsFromImg';
-import {getThumbnailUrl} from '../../utils/selectImage/SelectImage';
-import { Text } from 'react-native-svg';
+import {Text} from 'react-native-svg';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 
 export const Album = () => {
   const {albumInfoSelected} = useAlbumStore();
   const thumbnailUrl = getThumbnailUrl(albumInfoSelected?.thumbnails);
 
-  const {isLoading, data: albumData, isError} = useStreamingAlbum(albumInfoSelected!.playlistId, thumbnailUrl);
+  const {
+    isLoading,
+    data: albumData,
+    isError,
+  } = useStreamingAlbum(albumInfoSelected!.playlistId, thumbnailUrl);
 
   const [colorTaget, setColorTaget] = useState<AndroidColors | null>(null);
 
@@ -113,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: colorBase,
     justifyContent: 'center',
     alignItems: 'center',
-    color:"#fff",
-    fontSize:20
+    color: '#fff',
+    fontSize: 20,
   },
 });

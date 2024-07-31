@@ -1,13 +1,13 @@
-import { FontAwesome6 } from '@expo/vector-icons';
-import RNBounceable from '@freakycoder/react-native-bounceable';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { FlashList } from '@shopify/flash-list';
 import React from 'react';
-import { Text, View } from 'react-native';
-import { RandomPlaylistInterface } from '../../../interfaces/randomPlayList/RandomPlaylist';
-import { RootStackParamList } from '../../../types/screenStack';
-import { PlaylistCard } from '../components/PlaylistCard';
+import RNBounceable from '@freakycoder/react-native-bounceable';
+import {FontAwesome6} from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {FlashList} from '@shopify/flash-list';
+import {Text, View} from 'react-native';
+import {RandomPlaylistInterface} from 'interfaces/randomPlayList/RandomPlaylist';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {PlaylistCard} from '../components/PlaylistCard';
 import styles from '../styles/PlaylistAllItemsListStyles';
 
 interface PropRandomPlaylistInfo {

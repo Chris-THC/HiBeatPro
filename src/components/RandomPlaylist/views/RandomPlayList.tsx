@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from '../styles/RandPlayliStyle';
-import {RootStackParamList} from '../../../types/screenStack';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useRandomPlaylist} from '../../../hooks/UsePlaylist/UsePlaylist';
-import {PlaylistCard} from '../components/PlaylistCard';
 import {FontAwesome6} from '@expo/vector-icons';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {useRandomPlaylistStore} from '../../../store/randomPlatlistStore/randomPlaylistStore';
-import {PlayListLoader} from '../../../utils/skeleton/loaders/PlayListLoader/PlayListLoader';
+import {PlaylistCard} from '../components/PlaylistCard';
+import { useRandomPlaylist } from 'hooks/UsePlaylist/UsePlaylist';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
+import { useRandomPlaylistStore } from 'store/randomPlatlistStore/randomPlaylistStore';
+import { PlayListLoader } from 'utils/skeleton/loaders/PlayListLoader/PlayListLoader';
 
 export const RandomPlayList = () => {
   const {isLoading, data: albumsArray, isError} = useRandomPlaylist();

@@ -1,14 +1,14 @@
+import React from 'react';
 import {AntDesign} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
-import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import TrackPlayer, {Track} from 'react-native-track-player';
-import {handlerPlay} from '../../../services/TrackPlayerService/TrackPlayerEvents';
-import {RootStackParamList} from '../../../types/screenStack';
 import {TrackCard} from './TrackListOnStack';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
 
 interface PropsTrackList {
   topSongs: Track[];

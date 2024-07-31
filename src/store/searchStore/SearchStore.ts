@@ -1,7 +1,7 @@
+import {AlbumSearch} from 'interfaces/AlbumSearch/AlbumSearch';
+import {ArtistDetailed} from 'interfaces/SerachInterface/ArtistDetails';
+import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import {create} from 'zustand';
-import {AlbumSearch} from '../../interfaces/AlbumSearch/AlbumSearch';
-import {ArtistDetailed} from '../../interfaces/SerachInterface/ArtistDetails';
-import {SongDetailed} from '../../interfaces/SerachInterface/SearchTracks';
 
 interface SearchStore {
   searchSomething: string;
