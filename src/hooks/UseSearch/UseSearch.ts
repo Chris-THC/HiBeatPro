@@ -1,6 +1,6 @@
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
+import { SearchResult } from 'interfaces/SerachInterface/SearchResult';
 import YTMusic from 'ytmusic-api';
-import {SearchResult} from '../../interfaces/SerachInterface/SearchResult';
 const ytmusic = new YTMusic();
 
 export const serachFuntion = async (something: string): Promise<any> => {

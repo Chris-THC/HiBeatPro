@@ -1,10 +1,8 @@
 import axios from 'axios';
-import {PublicPlaylist} from '../../interfaces/PublicPlaylist/PublicPlaylist';
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
+import { PublicPlaylist } from 'interfaces/PublicPlaylist/PublicPlaylist';
 
-export const publicPlayList = async (
-  browseId: string,
-): Promise<PublicPlaylist[] | null> => {
+export const publicPlayList = async (browseId: string): Promise<PublicPlaylist[] | null> => {
   let keyAPI = 'AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc';
 
   const url = `https://music.youtube.com/youtubei/v1/browse?key=${keyAPI}`;

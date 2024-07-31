@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
-import {YTMusicKey} from '../../enums/Enums';
-import {TopArtistInterface} from '../../interfaces/TopArtistInterface/TopArtist';
+import { YTMusicKey } from 'enums/Enums';
+import { TopArtistInterface } from 'interfaces/TopArtistInterface/TopArtist';
 
 //Here we get all users list data
 export const getTopArtistAxios = async () => {

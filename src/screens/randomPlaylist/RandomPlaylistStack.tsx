@@ -1,9 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
-import {PlaylistAllItemsList} from '../../components/RandomPlaylist/views/PlaylistAllItemsList';
-import {useRandomPlaylistStore} from '../../store/randomPlatlistStore/randomPlaylistStore';
 import Styles from './styles/RandPlaylistStyles';
-import {ActiveTrackCrad} from '../../components/ActiveTrackCrad/ActiveTrackCrad';
+import { useRandomPlaylistStore } from 'store/randomPlatlistStore/randomPlaylistStore';
+import { PlaylistAllItemsList } from 'components/RandomPlaylist/views/PlaylistAllItemsList';
+import { ActiveTrackCrad } from 'components/ActiveTrackCrad/ActiveTrackCrad';
+
 
 export const RandomPlayListStack = () => {
   const {randomPlaylistStore} = useRandomPlaylistStore();

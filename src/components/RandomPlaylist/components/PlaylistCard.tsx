@@ -1,15 +1,15 @@
-import { FontAwesome } from '@expo/vector-icons';
+import React, {useEffect, useState} from 'react';
+import {FontAwesome} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { AndroidColors } from '../../../interfaces/colorsInterface/Colors';
-import { RandomPlaylistInterface } from '../../../interfaces/randomPlayList/RandomPlaylist';
-import { usePlaylisStore } from '../../../store/playlistStore/playlistStore';
-import { RootStackParamList } from '../../../types/screenStack';
-import { ImageColorPalette } from '../../../utils/colors/ColorsFromImg';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
+import {RandomPlaylistInterface} from 'interfaces/randomPlayList/RandomPlaylist';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {usePlaylisStore} from 'store/playlistStore/playlistStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
 import styles from '../styles/PlaylistCardstyles';
 
 interface PropCard {
@@ -36,8 +36,6 @@ export const PlaylistCard: React.FC<PropCard> = ({playlist}) => {
       onPress={() => {
         setPlaylistSelected(playlist!);
         setIdPlaylist(playlist.browseId);
-        console.log(playlist.browseId);
-        
         navigateTo.navigate('Playlist');
       }}
       style={[

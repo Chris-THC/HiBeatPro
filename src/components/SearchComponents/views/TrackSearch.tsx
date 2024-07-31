@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {colorBase} from '../../../enums/AppColors';
-import {useSearchStore} from '../../../store/searchStore/SearchStore';
-import {TrackListSerach} from '../components/TrackListSearch';
+import {StyleSheet, Text, View} from 'react-native';
+import { useSearchStore } from 'store/searchStore/SearchStore';
+import { TrackListSerach } from '../components/TrackListSearch';
+import { colorBase } from 'enums/AppColors';
 
 export const TrackSearch = () => {
   const {trackList} = useSearchStore();

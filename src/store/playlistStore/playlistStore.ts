@@ -1,5 +1,5 @@
+import { RandomPlaylistInterface } from 'interfaces/randomPlayList/RandomPlaylist';
 import { create } from 'zustand';
-import { RandomPlaylistInterface } from '../../interfaces/randomPlayList/RandomPlaylist';
 
 interface PlaylistStore {
   idPlaylist: string;

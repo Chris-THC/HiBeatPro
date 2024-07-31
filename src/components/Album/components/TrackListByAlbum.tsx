@@ -1,15 +1,14 @@
+import React from 'react';
 import {Entypo} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {FlashList} from '@shopify/flash-list';
-import React from 'react';
+import {AlbumStreaming} from 'interfaces/AlbumSearch/AlbumStreaming';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {Song} from '../../../interfaces/ArtistInterface/YTMuiscArtistInterface';
-import {useAlbumStore} from '../../../store/albumStore/albumStore';
-import {getStreamingData} from '../../../services/streaming/StreamingTrack';
 import TrackPlayer from 'react-native-track-player';
-import {handlerPlay} from '../../../services/TrackPlayerService/TrackPlayerEvents';
-import {AlbumStreaming} from '../../../interfaces/AlbumSearch/AlbumStreaming';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
+import {useAlbumStore} from 'store/albumStore/albumStore';
 
 interface PropsTrackList {
   topSongs: AlbumStreaming[];

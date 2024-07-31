@@ -1,8 +1,8 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {AlbumSearch} from '../components/SearchComponents/views/AlbumSearch';
-import {ArtistSearch} from '../components/SearchComponents/views/ArtistSearch';
-import {colorBase} from '../enums/AppColors';
-import {TrackSearch} from '../components/SearchComponents/views/TrackSearch';
+import {AlbumSearch} from 'components/SearchComponents/views/AlbumSearch';
+import {ArtistSearch} from 'components/SearchComponents/views/ArtistSearch';
+import {TrackSearch} from 'components/SearchComponents/views/TrackSearch';
+import {colorBase} from 'enums/AppColors';
 
 const Tab = createMaterialTopTabNavigator();
 

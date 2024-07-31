@@ -1,6 +1,7 @@
 import {UseQueryResult, useQuery} from '@tanstack/react-query';
+import { ArtistFull } from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
 import YTMusic from 'ytmusic-api';
-import {ArtistFull} from '../../interfaces/ArtistInterface/YTMuiscArtistInterface';
+
 const ytmusic = new YTMusic();
 
 const artistInfoFunction = async (artistId: string): Promise<ArtistFull | null> => {

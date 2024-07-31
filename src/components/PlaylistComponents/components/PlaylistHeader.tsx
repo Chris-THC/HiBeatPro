@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import TextTicker from 'react-native-text-ticker';
-import {usePlaylisStore} from '../../../store/playlistStore/playlistStore';
+import { usePlaylisStore } from 'store/playlistStore/playlistStore';
 
 export const PlaylistHeader: React.FC = () => {
   const {playlistSelected} = usePlaylisStore();

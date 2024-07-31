@@ -1,20 +1,21 @@
-import {FontAwesome6} from '@expo/vector-icons';
-import RNBounceable from '@freakycoder/react-native-bounceable';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {Text, View} from 'react-native';
-import {useAlbumRelase} from '../../../hooks/UseAlbumsRelase/UseAlbumRelase';
-import {useAlbumListStore} from '../../../store/albumResaleStore/AlbumsResaleStore';
-import {RootStackParamList} from '../../../types/screenStack';
-import {RecientlyAlbumLoader} from '../../../utils/skeleton/loaders/RecientlyAlbums/RecientlyAudioLoader';
+import RNBounceable from '@freakycoder/react-native-bounceable';
+import {FontAwesome6} from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useAlbumRelase} from 'hooks/UseAlbumsRelase/UseAlbumRelase';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useAlbumListStore} from 'store/albumResaleStore/AlbumsResaleStore';
+import {RecientlyAlbumLoader} from 'utils/skeleton/loaders/RecientlyAlbums/RecientlyAudioLoader';
 import {AlbumRelaseCrad} from '../components/AlbumRelaseCrad';
 import styles from '../styles/AlbResale';
 
 export const AlbumsResale = () => {
   const {isLoading: loadAlbum, data: albumsRelase, isError} = useAlbumRelase();
   const {setAlbumListStore} = useAlbumListStore();
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   if (loadAlbum) {
     return <RecientlyAlbumLoader />;

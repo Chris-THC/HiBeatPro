@@ -1,18 +1,18 @@
+import {FontAwesome} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
+import {AlbumSummary} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {AlbumSummary} from '../../../../interfaces/ArtistInterface/YTMuiscArtistInterface';
-import {AndroidColors} from '../../../../interfaces/colorsInterface/Colors';
-import {ImageColorPalette} from '../../../../utils/colors/ColorsFromImg';
-import {FontAwesome} from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useAlbumStore} from '../../../../store/albumStore/albumStore';
-import {RootStackParamList} from '../../../../types/screenStack';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 import styles from './styles/AlbumListStyles';
-import {getThumbnailUrl} from '../../../../utils/selectImage/SelectImage';
 
 interface AlbumListProps {
   topAlbums: AlbumSummary[];

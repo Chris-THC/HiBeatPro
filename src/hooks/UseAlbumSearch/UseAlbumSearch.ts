@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {AlbumSearch} from '../../interfaces/AlbumSearch/AlbumSearch';
+import { AlbumSearch } from 'interfaces/AlbumSearch/AlbumSearch';
 
 export const searchAlbumsByAxios = async (somethingQuery: string): Promise<AlbumSearch[] | null> => {
   const URL = `https://music.youtube.com/youtubei/v1/search?prettyPrint=false`;

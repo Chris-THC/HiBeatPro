@@ -1,15 +1,15 @@
+import React from 'react';
 import {Entypo} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {FlashList} from '@shopify/flash-list';
-import React, {useState} from 'react';
+import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
+import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
-import {SongDetailed} from '../../../interfaces/SerachInterface/SearchTracks';
-import {handlerPlay} from '../../../services/TrackPlayerService/TrackPlayerEvents';
-import {getStreamingData} from '../../../services/streaming/StreamingTrack';
-import {formatToSeconds} from '../../../utils/time/SecondsToMinutes';
-import {SuggestionsTrackListFuntion} from '../../../hooks/UseSimilarTracks/UseSimilarTracks';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
+import {formatToSeconds} from 'utils/time/SecondsToMinutes';
 
 interface PropsTrackList {
   topSongs: SongDetailed[];
@@ -21,7 +21,11 @@ interface PropTrackCard {
   onTrackSelect: (position: number) => void;
 }
 
-const TrackCard: React.FC<PropTrackCard> = ({track,position,onTrackSelect}) => {
+const TrackCard: React.FC<PropTrackCard> = ({
+  track,
+  position,
+  onTrackSelect,
+}) => {
   return (
     <RNBounceable
       onPress={() => onTrackSelect(position)}

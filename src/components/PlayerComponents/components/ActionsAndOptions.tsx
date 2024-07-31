@@ -1,12 +1,12 @@
-import {MaterialIcons, SimpleLineIcons, Fontisto} from '@expo/vector-icons';
+import {Fontisto, MaterialIcons} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import TrackPlayer from 'react-native-track-player';
-import {useTrackStackStore} from '../../../store/trackStackStore/GetTrackStore';
-import {RootStackParamList} from '../../../types/screenStack';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useTrackStackStore} from 'store/trackStackStore/GetTrackStore';
 
 export const ActionsAndOptions: React.FC = () => {
   const {setTrackOnStack} = useTrackStackStore();

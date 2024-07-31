@@ -1,15 +1,15 @@
 import {FontAwesome6} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {FlashList} from '@shopify/flash-list';
-import React from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
-import {StatusUpBar} from '../../components/StatusBar/StatusUpBar';
-import {colorBase} from '../../enums/AppColors';
-import {useAlbumListStore} from '../../store/albumResaleStore/AlbumsResaleStore';
-import {AlbumCardByRealce} from './components/AlbumListCrad';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../types/screenStack';
+import {FlashList} from '@shopify/flash-list';
+import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
+import {colorBase} from 'enums/AppColors';
+import React from 'react';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useAlbumListStore} from 'store/albumResaleStore/AlbumsResaleStore';
+import {AlbumCardByRealce} from './components/AlbumListCrad';
 
 export const AlbumsList = () => {
   const {albumsLitStore} = useAlbumListStore();

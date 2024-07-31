@@ -1,7 +1,7 @@
+import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import {AlbumRelaseInterface} from '../../interfaces/AlbumsRelase/AlbumsRelase';
-import {UseQueryResult, useQuery} from '@tanstack/react-query';
-import {YTMusicKey} from '../../enums/Enums';
+import { YTMusicKey } from 'enums/Enums';
+import { AlbumRelaseInterface } from 'interfaces/AlbumsRelase/AlbumsRelase';
 
 export const AlbumRelaseFuntion = async () => {
   const url = `https://music.youtube.com/youtubei/v1/browse?key=${YTMusicKey}`;

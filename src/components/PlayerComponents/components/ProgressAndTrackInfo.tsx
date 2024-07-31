@@ -1,12 +1,9 @@
 import Slider from '@react-native-community/slider';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import TrackPlayer, {
-  useActiveTrack,
-  useProgress,
-} from 'react-native-track-player';
-import {formatToSeconds} from '../../../utils/time/SecondsToMinutes';
+import TrackPlayer, {useActiveTrack, useProgress} from 'react-native-track-player';
 import TextTicker from 'react-native-text-ticker';
+import {formatToSeconds} from 'utils/time/SecondsToMinutes';
 
 interface PropsColors {
   lightMuted: string;

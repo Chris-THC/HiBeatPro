@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {getStreamingData} from '../../services/streaming/StreamingTrack';
 import {AddTrack} from 'react-native-track-player';
+import { getStreamingData } from 'services/streaming/StreamingTrack';
 
 export const SuggestionsTrackListFuntion = async (idTrack: string): Promise<AddTrack[] | null> => {
   const url =

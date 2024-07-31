@@ -1,13 +1,9 @@
+import React from 'react';
 import {AntDesign, FontAwesome} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {
-  handlerNextTrack,
-  handlerPreviousTrack,
-  togglePlayback,
-} from '../../../services/TrackPlayerService/TrackPlayerEvents';
-import {useIsTrackPlaying} from '../../../services/TrackPlayerService/TrackPlayerStates';
+import { handlerNextTrack, handlerPreviousTrack, togglePlayback } from 'services/TrackPlayerService/TrackPlayerEvents';
+import { useIsTrackPlaying } from 'services/TrackPlayerService/TrackPlayerStates';
 
 interface ColorProp {
   color: string;
