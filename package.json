@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@animatereactnative/marquee": "^0.2.0",
     "@expo/vector-icons": "^14.0.2",
     "@freakycoder/react-native-bounceable": "^1.0.3",
     "@react-native-community/netinfo": "^11.3.2",
