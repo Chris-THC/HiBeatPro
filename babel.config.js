@@ -7,6 +7,7 @@ module.exports = {
       {
         root: ['./src'],
         alias: {
+          components: './src/components',
           enums: './src/enums',
           services:'./src/services',
           typesScren:"./src/types",
