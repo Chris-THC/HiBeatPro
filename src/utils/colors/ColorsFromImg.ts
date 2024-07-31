@@ -1,6 +1,5 @@
-import { AndroidColors } from 'interfaces/colorsInterface/Colors';
-import {getColors} from 'react-native-image-colors';
-
+import {getColors} from 'react-native-image-colors'; // Asegúrate de importar Platform desde react-native-image-colors
+import {AndroidColors} from '../../interfaces/colorsInterface/Colors';
 
 export const ImageColorPalette = async (urlImage: string): Promise<AndroidColors | null> => {
   try {

@@ -1,11 +1,10 @@
 import {FlashList} from '@shopify/flash-list';
 import React from 'react';
 import {Text, View} from 'react-native';
-import {ArtistCard} from 'components/TopArtist/components/ArtistCard';
+import {useTopArtistGlobal} from '../../../hooks/UseTopArtist/UseTopArtist';
+import {ArtistCard} from '../components/ArtistCard';
 import styles from '../styles/TopArtistSryles';
-import { TopArtistLoader } from 'utils/skeleton/loaders/TopArtist/TopArtisLoader';
-import { useTopArtistGlobal } from 'hooks/UseTopArtist/UseTopArtist';
-
+import {TopArtistLoader} from '../../../utils/skeleton/loaders/TopArtist/TopArtisLoader';
 
 export const TopArtist = () => {
   const {

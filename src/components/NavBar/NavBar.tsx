@@ -4,12 +4,12 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {StackScreensTy} from 'scrrenTypes/ScreenTypes';
+import {RootStackParamList} from '../../types/screenStack';
 
 export const NavBar: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackScreensTy>>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const searchAction = () => {
-    // navigation.navigate('Search');
+    navigation.navigate('Search');
   };
   return (
     <View style={styles.navBarContainer}>

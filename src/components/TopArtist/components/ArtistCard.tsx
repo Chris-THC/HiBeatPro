@@ -1,15 +1,15 @@
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {TopArtistInterface} from '../../../interfaces/TopArtistInterface/TopArtist';
+import {AndroidColors} from '../../../interfaces/colorsInterface/Colors';
+import {ImageColorPalette} from '../../../utils/colors/ColorsFromImg';
 import styles from './../styles/ArtistCard';
-import {TopArtistInterface} from 'interfaces/TopArtistInterface/TopArtist';
-import {AndroidColors} from 'interfaces/colorsInterface/Colors';
-import {StackScreensTy} from 'scrrenTypes/ScreenTypes';
-import {useArtistStore} from 'store/artistStore/artistStore';
-import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../types/screenStack';
+import {useArtistStore} from '../../../store/artistStore/artistStore';
 
 interface PropsArtistCard {
   artistInfo: TopArtistInterface;
@@ -17,7 +17,8 @@ interface PropsArtistCard {
 
 export const ArtistCard: React.FC<PropsArtistCard> = ({artistInfo}) => {
   const {setArtistId} = useArtistStore();
-  const navigation = useNavigation<NativeStackNavigationProp<StackScreensTy>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [colorTaget, setColorTaget] = useState<AndroidColors | null>(null);
 
   const GetColorImage = async () => {
@@ -31,7 +32,7 @@ export const ArtistCard: React.FC<PropsArtistCard> = ({artistInfo}) => {
 
   const GoToArtistScreen = () => {
     setArtistId(artistInfo.idArtist);
-    // navigation.navigate('ArtistScren');
+    navigation.navigate('ArtistScren');
   };
 
   return (

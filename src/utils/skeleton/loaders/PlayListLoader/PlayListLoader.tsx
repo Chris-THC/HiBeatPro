@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentLoader, { Rect } from 'react-content-loader/native';
+import ContentLoader, {Rect, Circle, Path} from 'react-content-loader/native';
 
 export const PlayListLoader = (props: any) => (
   <ContentLoader

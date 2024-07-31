@@ -1,5 +1,5 @@
-import {AlbumRelaseInterface} from 'interfaces/AlbumsRelase/AlbumsRelase';
 import {create} from 'zustand';
+import {AlbumRelaseInterface} from '../../interfaces/AlbumsRelase/AlbumsRelase';
 
 interface AlbumListStore {
   albumsLitStore: AlbumRelaseInterface[] | null;

@@ -1,7 +1,7 @@
 import {create} from 'zustand';
-import {AlbumSearch} from 'interfaces/AlbumSearch/AlbumSearch';
-import {AlbumRelaseInterface} from 'interfaces/AlbumsRelase/AlbumsRelase';
-import {AlbumSummary} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
+import {AlbumSearch} from '../../interfaces/AlbumSearch/AlbumSearch';
+import {AlbumRelaseInterface} from '../../interfaces/AlbumsRelase/AlbumsRelase';
+import {AlbumSummary} from '../../interfaces/ArtistInterface/YTMuiscArtistInterface';
 
 interface AlbumStore {
   albumId: string;
