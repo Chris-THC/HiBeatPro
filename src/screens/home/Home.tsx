@@ -1,8 +1,9 @@
-import React from 'react';
+import {NavBar} from 'components/NavBar/NavBar';
+import {TopArtist} from 'components/TopArtist/views/TopArtist';
+import {StatusUpBar} from 'components/statusBars/StatusUpBar';
 import {colorBase} from 'enums/AppColors';
+import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import { StatusUpBar } from 'components/statusBars/StatusUpBar';
-import { NavBar } from 'components/NavBar/NavBar';
 
 export const Home: React.FC = () => {
   return (
@@ -10,9 +11,9 @@ export const Home: React.FC = () => {
       <StatusUpBar backgroundColor={colorBase} />
       <NavBar />
       <ScrollView>
-        {/* <TopArtist />
-        <AlbumsResale />
-        <RandomPlayList /> */}
+        <TopArtist />
+        {/* <AlbumsResale /> */}
+        {/* <RandomPlayList /> */}
       </ScrollView>
       {/* <ActiveTrackCrad /> */}
     </View>

@@ -9,7 +9,11 @@
       "services/*": ["./src/services/*"],
       "scrrenTypes/*": ["./src/types/*"],
       "screens/*": ["./src/screens/*"],
-      "navigation/*": ["./src/navigation/*"]
+      "navigation/*": ["./src/navigation/*"],
+      "interfaces/*": ["./src/interfaces/*"],
+      "utils/*": ["./src/utils/*"],
+      "store/*": ["./src/store/*"],
+      "hooks/*": ["./src/hooks/*"],
     }
   }
 }
