@@ -1,15 +1,15 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import FastImage from 'react-native-fast-image';
-import {AntDesign, FontAwesome} from '@expo/vector-icons';
+import { Marquee } from '@animatereactnative/marquee';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import TextTicker from 'react-native-text-ticker';
-import {useActiveTrack} from 'react-native-track-player';
-import { useIsTrackPlaying } from 'services/TrackPlayerService/TrackPlayerStates';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
+import { useActiveTrack } from 'react-native-track-player';
 import { RootStackParamList } from 'scrrenTypes/screenStack';
 import { togglePlayback } from 'services/TrackPlayerService/TrackPlayerEvents';
+import { useIsTrackPlaying } from 'services/TrackPlayerService/TrackPlayerStates';
 
 export const ActiveTrackCrad: React.FC = () => {
   const activeTrack = useActiveTrack();
@@ -33,17 +33,11 @@ export const ActiveTrackCrad: React.FC = () => {
         />
       </View>
       <View style={styles.infoContainer}>
-        <TextTicker
-          style={styles.artistName}
-          duration={9000}
-          loop
-          bounce={true}
-          repeatSpacer={40}
-          marqueeDelay={30}>
-          {`${activeTrack?.title || 'Track name'}  •  ${
-            activeTrack?.artist || 'Artist name'
-          }`}
-        </TextTicker>
+        <Marquee spacing={50} speed={0.5}>
+          <Text style={styles.artistName}>{`${
+            activeTrack?.title || 'Track name'
+          }  •  ${activeTrack?.artist || 'Artist name'}`}</Text>
+        </Marquee>
       </View>
       <RNBounceable onPress={togglePlayback} style={styles.actionsContainer}>
         {isPlaying ? (

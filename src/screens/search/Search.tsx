@@ -1,10 +1,11 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
 import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
+import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 import {SearchForm} from 'components/SearchComponents/components/SearchForm';
 import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
 import {colorBase} from 'enums/AppColors';
-import {TopTabNavigator} from '../../navigation/TopTabNavigaatot';
+import {TopTabNavigator} from 'navigation/TopTabNavigaatot';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 
 export const Search = () => {
   return (
@@ -13,6 +14,7 @@ export const Search = () => {
       <SearchForm />
       <TopTabNavigator />
       <ActiveTrackCrad />
+      <SheetModal />
     </View>
   );
 };
