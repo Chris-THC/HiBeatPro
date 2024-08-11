@@ -1,17 +1,17 @@
-import {Entypo} from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {FlashList} from '@shopify/flash-list';
-import {SheetModal} from 'components/BottomSheetModal/SheetModal';
-import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
-import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
+import { FlashList } from '@shopify/flash-list';
+import { SuggestionsTrackListFuntion } from 'hooks/UseSimilarTracks/UseSimilarTracks';
+import { SongDetailed } from 'interfaces/SerachInterface/SearchTracks';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
-import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
-import {getStreamingData} from 'services/streaming/StreamingTrack';
-import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
-import {formatToSeconds} from 'utils/time/SecondsToMinutes';
+import { handlerPlay } from 'services/TrackPlayerService/TrackPlayerEvents';
+import { getStreamingData } from 'services/streaming/StreamingTrack';
+import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
+import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
+import { formatToSeconds } from 'utils/time/SecondsToMinutes';
 
 interface PropsTrackList {
   topSongs: SongDetailed[];
@@ -28,7 +28,9 @@ const TrackCard: React.FC<PropTrackCard> = ({
   position,
   onTrackSelect,
 }) => {
-  const {bottomSheetModalRef, presentModal} = useBottomSheetStore();
+  const {presentModal} = useBottomSheetStore();
+  const {setTrackInfo} = useModalTrack();
+
   return (
     <RNBounceable
       onPress={() => onTrackSelect(position)}
@@ -51,12 +53,12 @@ const TrackCard: React.FC<PropTrackCard> = ({
           {`${track.artist.name}  •  ${formatToSeconds(track.duration)}`}
         </Text>
       </View>
-      {/* <RNBounceable
-        onPress={() => console.log('Opciones')}
+      <RNBounceable
+        onPress={() => {
+          presentModal();
+          setTrackInfo(track);
+        }}
         style={styles.actionsContainer}>
-        <Entypo name="dots-three-horizontal" size={25} color="#fff" />
-      </RNBounceable> */}
-      <RNBounceable onPress={presentModal} style={styles.actionsContainer}>
         <Entypo name="dots-three-horizontal" size={25} color="#fff" />
       </RNBounceable>
     </RNBounceable>

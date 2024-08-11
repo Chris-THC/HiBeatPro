@@ -1,18 +1,17 @@
-import {Entypo} from '@expo/vector-icons';
-import RNBounceable from '@freakycoder/react-native-bounceable';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import {secomTextColor, secondColor} from 'enums/AppColors';
-import React, {useCallback, useMemo, useRef} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {BottomSheetModalFC} from './BottomSheetModal';
+import {secondColor} from 'enums/AppColors';
+import React, {useCallback, useMemo} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {BottomSheetModalFC} from './BottomSheetModal';
+import {MenuComponent} from './MenuItem';
 
 export const SheetModal: React.FC = () => {
-  const {bottomSheetModalRef, presentModal} = useBottomSheetStore();
+  const {bottomSheetModalRef} = useBottomSheetStore();
   //   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
@@ -27,9 +26,6 @@ export const SheetModal: React.FC = () => {
   return (
     <BottomSheetModalProvider>
       <View style={styles.container}>
-        {/* <RNBounceable onPress={presentModal} style={styles.actionsContainer}>
-          <Entypo name="dots-three-horizontal" size={25} color="#fff" />
-        </RNBounceable> */}
         <BottomSheetModal
           ref={bottomSheetModalRef}
           index={1}
@@ -37,7 +33,7 @@ export const SheetModal: React.FC = () => {
           onChange={handleSheetChanges}
           backgroundComponent={BottomSheetModalFC}>
           <BottomSheetView style={styles.contentContainer}>
-            <Text style={{color: secomTextColor}}>Awesome 🎉</Text>
+            <MenuComponent />
           </BottomSheetView>
         </BottomSheetModal>
       </View>
@@ -51,7 +47,7 @@ const styles = StyleSheet.create({
     // padding: 24,
     justifyContent: 'center',
     backgroundColor: secondColor,
-    position:"relative"
+    position: 'relative',
   },
   contentContainer: {
     flex: 1,
