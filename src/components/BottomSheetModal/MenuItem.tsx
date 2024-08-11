@@ -6,6 +6,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {ScrollView} from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
+import {TrackDownloader} from 'services/downloader/Downloader';
 import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
 import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
@@ -72,6 +73,7 @@ export const MenuComponent: React.FC = () => {
         label="Download Track"
         onPress={() => {
           console.log(trackInfo?.videoId);
+          TrackDownloader(trackInfo!.videoId);
         }}
       />
       <MenuItem
