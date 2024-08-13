@@ -7,6 +7,7 @@ import FastImage from 'react-native-fast-image';
 import {ScrollView} from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
 import {TrackDownloader} from 'services/downloader/Downloader';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
 import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
 import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
@@ -71,9 +72,9 @@ export const MenuComponent: React.FC = () => {
       <MenuItem
         icon={<MaterialIcons name="download" size={26} color="#fff" />}
         label="Download Track"
-        onPress={() => {
-          console.log(trackInfo?.videoId);
-          TrackDownloader(trackInfo!.videoId);
+        onPress={async () => {
+          const track = await getStreamingData(trackInfo?.videoId!);
+          TrackDownloader(track.url, trackInfo!);
         }}
       />
       <MenuItem

@@ -1,40 +1,29 @@
+import {FFmpegKit} from 'ffmpeg-kit-react-native';
+import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import {Platform} from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import {getDownloadPermissionAndroid} from './PermissionAndroid';
 
-const downloadFile = async (videoId: string) => {
+const downloadFile = async (format: string, trackInfo: SongDetailed) => {
   try {
-    // Obtener la ruta de la carpeta de descargas
     const destinationPath = RNFetchBlob.fs.dirs.DownloadDir;
-    // Ruta completa del archivo
-    const destinationFilePath = `${destinationPath}/testAudio.mp3`;
-    // Elige el formato de audio con la mejor calidad
-    const format: string = 'url_Test';
+    const safeName = trackInfo?.name.replace(/[^a-zA-Z0-9]/g, '_');
+    const safeArtist = trackInfo?.artist.name.replace(/[^a-zA-Z0-9]/g, '_');
+    const destinationFilePath = `${destinationPath}/${safeName}_${safeArtist}.m4a`;
+    const tempFilePath = `${destinationPath}/${safeName}_${safeArtist}-temp.m4a`; // Archivo temporal
 
-    const infoTrack = {
-      title: 'Nice to Meet You',
-      artist: 'Imagine Dragons',
-      album: 'LOOM',
-      genre: 'Alternative',
-      date: '2024-05-24',
-      image:
-        'https://lh3.googleusercontent.com/HXl1-8EFmkheZcYoPiFgDe1HCeaBaZDWY4yxjJsaZqSasbompkowFh7UC7vxIIARnXh_5uTBLAkHs_qz=w544-h544-l90-rj',
-    };
-
-    // Configura RNFetchBlob para guardar el archivo en la carpeta de descargas
     const config = RNFetchBlob.config({
       addAndroidDownloads: {
         useDownloadManager: true,
-        mime: 'audio/mpeg',
+        mime: 'audio/aac',
         notification: true,
         path: destinationFilePath,
-        description: 'Descargando archivo MP3...',
+        description: 'Download file...',
         mediaScannable: true,
       },
     });
 
-    // Descarga el archivo MP3 utilizando RNFetchBlob con seguimiento del progreso
-    const resp = await config
+    await config
       .fetch('GET', format)
       .progress({count: 10}, (received, total) => {
         const percentage = Math.floor((received / total) * 100);
@@ -43,21 +32,43 @@ const downloadFile = async (videoId: string) => {
 
     if (Platform.OS === 'android') {
       await RNFetchBlob.fs.scanFile([
-        {path: destinationFilePath, mime: 'application/mp3'},
+        {path: destinationFilePath, mime: 'audio/aac'},
       ]);
     }
 
-    console.log('Archivo MP3 descargado en:', resp.path());
+    // Agregar metadatos al archivo AAC utilizando FFmpegKit y un archivo temporal
+    // const ffmpegCommand = `-y -i "${destinationFilePath}" -metadata Title="${trackInfo?.name}" -metadata Artist="${trackInfo?.artist.name}" -metadata Album="${trackInfo?.album.name}" -c:a copy "${tempFilePath}"`;
+    const ffmpegCommand = `-y -i "${destinationFilePath}" -metadata Title="${trackInfo?.name}" -metadata Artist="${trackInfo?.artist.name}" -metadata Album="${trackInfo?.album.name}" -map_metadata 0 -c:a copy "${tempFilePath}"`;
+
+    const session = await FFmpegKit.execute(ffmpegCommand);
+
+    const returnCode = await session.getReturnCode();
+
+    if (returnCode.isValueSuccess()) {
+      // Reemplazar el archivo original con el archivo temporal
+      await RNFetchBlob.fs.unlink(destinationFilePath); // Eliminar el archivo original
+      await RNFetchBlob.fs.mv(tempFilePath, destinationFilePath); // Renombrar el archivo temporal
+
+      console.log(
+        'Archivo AAC descargado y metadatos agregados en:',
+        destinationFilePath,
+      );
+    } else {
+      console.error(
+        'Error al agregar metadatos con FFmpeg:',
+        await session.getAllLogsAsString(),
+      );
+    }
   } catch (error) {
-    console.error('Error al descargar el archivo MP3:', error);
+    console.error('Error al descargar el archivo AAC:', error);
   }
 };
 
-export const TrackDownloader = (videoId: string) => {
+export const TrackDownloader = (format: string, trackInfo: SongDetailed) => {
   if (Platform.OS === 'android') {
     getDownloadPermissionAndroid().then(granted => {
       if (granted) {
-        downloadFile(videoId);
+        downloadFile(format, trackInfo);
       }
     });
   }
