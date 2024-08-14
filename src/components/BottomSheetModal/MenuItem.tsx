@@ -74,7 +74,7 @@ export const MenuComponent: React.FC = () => {
         label="Download Track"
         onPress={async () => {
           const track = await getStreamingData(trackInfo?.videoId!);
-          TrackDownloader(track.url, trackInfo!);
+          TrackDownloader(track.url, trackInfo!, track?.artwork!);
         }}
       />
       <MenuItem
