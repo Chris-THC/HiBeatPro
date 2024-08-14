@@ -1,16 +1,22 @@
-import {FontAwesome5, MaterialIcons} from '@expo/vector-icons';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {colorBase, secondColor} from 'enums/AppColors';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { colorBase, secondColor } from 'enums/AppColors';
+import { UseIdPlayList } from 'hooks/UseAlbum/UseIdAlbum';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {ScrollView} from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
-import {TrackDownloader} from 'services/downloader/Downloader';
-import {getStreamingData} from 'services/streaming/StreamingTrack';
-import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
-import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
-import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
+import { TrackDownloader } from 'services/downloader/Downloader';
+import { getStreamingData } from 'services/streaming/StreamingTrack';
+import { useAlbumStore } from 'store/albumStore/albumStore';
+import { useArtistStore } from 'store/artistStore/artistStore';
+import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
+import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
+import { getThumbnailUrl } from 'utils/selectImage/SelectImage';
 
 type MenuItemProps = {
   icon: React.ReactNode;
@@ -30,6 +36,11 @@ export const MenuComponent: React.FC = () => {
   const {bottomSheetModalRef} = useBottomSheetStore();
   const {trackInfo} = useModalTrack();
   const imageUrl = getThumbnailUrl(trackInfo?.thumbnails);
+  // Movin betwen screens:
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const {setArtistId} = useArtistStore();
+  const {setAlbumsInfoSelected} = useAlbumStore();
+
 
   return (
     <ScrollView style={styles.container}>
@@ -80,15 +91,24 @@ export const MenuComponent: React.FC = () => {
       <MenuItem
         icon={<FontAwesome5 name="user-tag" size={24} color="#fff" />}
         label="Go to Artist"
+        onPress={() => {
+          setArtistId(trackInfo?.artist.artistId!);
+          navigation.navigate('ArtistScren');
+        }}
       />
       <MenuItem
         icon={<MaterialIcons name="album" size={26} color="#fff" />}
         label="Go to Album"
+        onPress={async() => {
+         const albumInfo = await UseIdPlayList(trackInfo?.album.albumId!)
+          setAlbumsInfoSelected(albumInfo!);
+          navigation.navigate('Album');
+        }}
       />
-      <MenuItem
+      {/* <MenuItem
         icon={<MaterialIcons name="audiotrack" size={26} color="#fff" />}
         label="Simiar Tracks"
-      />
+      /> */}
 
       <MenuItem
         icon={<MaterialIcons name="cancel" size={26} color="red" />}
@@ -105,8 +125,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: secondColor,
-    borderRadius: 10,
-    margin: 10,
+    borderRadius: 5,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.3,
@@ -124,9 +143,9 @@ const styles = StyleSheet.create({
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 13,
     paddingHorizontal: 15,
-    borderBottomWidth: 0.75,
+    borderBottomWidth: 0.53,
     borderBottomColor: '#333c',
     marginVertical: 1,
   },
@@ -139,8 +158,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   imageStyle: {
-    height: 70,
-    width: 70,
-    borderRadius: 5,
+    height: 60,
+    width: 60,
+    borderRadius: 8,
   },
 });
