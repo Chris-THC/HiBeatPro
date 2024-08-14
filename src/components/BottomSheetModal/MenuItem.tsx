@@ -92,7 +92,9 @@ export const MenuComponent: React.FC = () => {
         icon={<FontAwesome5 name="user-tag" size={24} color="#fff" />}
         label="Go to Artist"
         onPress={() => {
-          setArtistId(trackInfo?.artist.artistId!);
+          console.log(trackInfo?.artist.artistId!);
+          
+          setArtistId(trackInfo!.artist.artistId!);
           navigation.navigate('ArtistScren');
         }}
       />
@@ -100,7 +102,7 @@ export const MenuComponent: React.FC = () => {
         icon={<MaterialIcons name="album" size={26} color="#fff" />}
         label="Go to Album"
         onPress={async() => {
-         const albumInfo = await UseIdPlayList(trackInfo?.album.albumId!)
+         const albumInfo = await UseIdPlayList(trackInfo!.album!.albumId!)
           setAlbumsInfoSelected(albumInfo!);
           navigation.navigate('Album');
         }}

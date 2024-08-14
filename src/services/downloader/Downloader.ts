@@ -3,7 +3,7 @@ import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import {Platform} from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import {getDownloadPermissionAndroid} from './PermissionAndroid';
-
+import {Song} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
 // const downloadFile = async (format: string, trackInfo: SongDetailed) => {
 //   try {
 //     const destinationPath = RNFetchBlob.fs.dirs.DownloadDir;
@@ -66,7 +66,7 @@ import {getDownloadPermissionAndroid} from './PermissionAndroid';
 // };
 
 
-const downloadFile = async (format: string, trackInfo: SongDetailed, trckImg:string) => {
+const downloadFile = async (format: string, trackInfo: SongDetailed | Song, trckImg:string) => {
   try {
     const destinationPath = RNFetchBlob.fs.dirs.DownloadDir;
     const safeName = trackInfo?.name.replace(/[^a-zA-Z0-9]/g, '_');
@@ -103,7 +103,7 @@ const downloadFile = async (format: string, trackInfo: SongDetailed, trckImg:str
     }
 
     // Agregar metadatos y la imagen de portada al archivo AAC utilizando FFmpegKit
-    const ffmpegCommand = `-y -i "${destinationFilePath}" -i "${tempImagePath}" -metadata Title="${trackInfo?.name}" -metadata Artist="${trackInfo?.artist.name}" -metadata Album="${trackInfo?.album.name}" -map 0 -map 1 -c copy -disposition:v:0 attached_pic "${tempFilePath}"`;
+    const ffmpegCommand = `-y -i "${destinationFilePath}" -i "${tempImagePath}" -metadata Title="${trackInfo?.name}" -metadata Artist="${trackInfo?.artist.name}" -metadata Album="${trackInfo?.album!.name}" -map 0 -map 1 -c copy -disposition:v:0 attached_pic "${tempFilePath}"`;
 
     const session = await FFmpegKit.execute(ffmpegCommand);
 
@@ -133,7 +133,7 @@ const downloadFile = async (format: string, trackInfo: SongDetailed, trckImg:str
 };
 
 
-export const TrackDownloader = (format: string, trackInfo: SongDetailed, trckImg:string) => {
+export const TrackDownloader = (format: string, trackInfo: SongDetailed | Song, trckImg:string) => {
   if (Platform.OS === 'android') {
     getDownloadPermissionAndroid().then(granted => {
       if (granted) {

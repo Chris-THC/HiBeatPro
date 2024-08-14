@@ -11,6 +11,7 @@ import {colorBase} from 'enums/AppColors';
 import {useArtistInfoById} from 'hooks/UseYtMusic/UserYtMusic';
 import {useArtistStore} from 'store/artistStore/artistStore';
 import styles from './styles/Artiststyles';
+import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 
 export const Artist = () => {
   const {artistId} = useArtistStore();
@@ -65,6 +66,7 @@ export const Artist = () => {
         </View>
       </ScrollView>
       <ActiveTrackCrad />
+      <SheetModal />
     </View>
   );
 };

@@ -24,5 +24,14 @@ interface Thumbnail {
   height: number;
 }
 
-
+// Auxilar para el modal:
+export interface Song {
+  type: 'SONG';
+  videoId: string;
+  name: string;
+  artist: Artist;
+  album: Album;
+  duration: number;
+  thumbnails: Thumbnail[];
+}
 
