@@ -1,4 +1,5 @@
 import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
+import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 import {PlaylistHeader} from 'components/PlaylistComponents/components/PlaylistHeader';
 import {TrackListByPlaylist} from 'components/PlaylistComponents/components/TracklistByPlaylist';
 import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
@@ -6,7 +7,7 @@ import {colorBase} from 'enums/AppColors';
 import {usePlaylistPublic} from 'hooks/UsePublicPlaylist/UsePublicPlaylist';
 import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {usePlaylisStore} from 'store/playlistStore/playlistStore';
 import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
@@ -52,6 +53,7 @@ export const Playlist = () => {
         <TrackListByPlaylist topSongs={playlist!} />
       </View>
       <ActiveTrackCrad />
+      <SheetModal />
     </View>
   );
 };

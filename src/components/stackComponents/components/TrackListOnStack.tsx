@@ -1,9 +1,12 @@
 import {Entypo} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
+import {UseSongDetaile} from 'hooks/UseSong/UseSong';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {Track} from 'react-native-track-player';
+import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 
 interface PropTrackCard {
   track: Track;
@@ -11,7 +14,14 @@ interface PropTrackCard {
   onTrackSelect: (position: number) => void;
 }
 
-export const TrackCard: React.FC<PropTrackCard> = ({track, position, onTrackSelect}) => {
+export const TrackCard: React.FC<PropTrackCard> = ({
+  track,
+  position,
+  onTrackSelect,
+}) => {
+  const {presentModal} = useBottomSheetStore();
+  const {setTrackInfo} = useModalTrack();
+
   return (
     <RNBounceable
       onPress={() => onTrackSelect(position)}
@@ -35,10 +45,13 @@ export const TrackCard: React.FC<PropTrackCard> = ({track, position, onTrackSele
         </Text>
       </View>
       <RNBounceable
-        onPress={() => console.log('Opciones')}
+        onPress={async () => {
+          const songInfo = await UseSongDetaile(track.id);
+          setTrackInfo(songInfo!);
+          presentModal();
+        }}
         style={styles.actionsContainer}>
         <Entypo name="dots-three-horizontal" size={25} color="#fff" />
-        {/* <PopUpMenu /> */}
       </RNBounceable>
     </RNBounceable>
   );

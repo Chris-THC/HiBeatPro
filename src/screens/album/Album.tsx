@@ -1,6 +1,7 @@
 import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
 import {AlbumHeader} from 'components/Album/components/AlbumHeader';
 import {TrackListByAlbum} from 'components/Album/components/TrackListByAlbum';
+import { SheetModal } from 'components/BottomSheetModal/SheetModal';
 import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
 import {colorBase} from 'enums/AppColors';
 import {useStreamingAlbum} from 'hooks/UseAlbum/UseAlbum';
@@ -67,6 +68,7 @@ export const Album = () => {
         <TrackListByAlbum topSongs={albumData!} />
       </View>
       <ActiveTrackCrad />
+      <SheetModal />
     </View>
   );
 };

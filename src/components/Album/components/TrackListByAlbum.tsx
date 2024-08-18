@@ -9,6 +9,9 @@ import TrackPlayer from 'react-native-track-player';
 import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
 import {getStreamingData} from 'services/streaming/StreamingTrack';
 import {useAlbumStore} from 'store/albumStore/albumStore';
+import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {UseSongDetaile} from 'hooks/UseSong/UseSong';
+import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 
 interface PropsTrackList {
   topSongs: AlbumStreaming[];
@@ -26,6 +29,8 @@ const TrackCard: React.FC<PropTrackCard> = ({
   onTrackSelect,
 }) => {
   const {albumInfoSelected} = useAlbumStore();
+  const {presentModal} = useBottomSheetStore();
+  const {setTrackInfo} = useModalTrack();
 
   return (
     <RNBounceable
@@ -50,7 +55,11 @@ const TrackCard: React.FC<PropTrackCard> = ({
         <Text style={styles.artistName}>{track.artist}</Text>
       </View>
       <RNBounceable
-        onPress={() => console.log('Opciones')}
+        onPress={async () => {
+          const songInfo = await UseSongDetaile(track.videoId);
+          setTrackInfo(songInfo!);
+          presentModal();
+        }}
         style={styles.actionsContainer}>
         <Entypo name="dots-three-horizontal" size={25} color="#fff" />
       </RNBounceable>
