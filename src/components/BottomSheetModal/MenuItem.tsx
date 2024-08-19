@@ -1,15 +1,19 @@
-import {FontAwesome5, MaterialIcons} from '@expo/vector-icons';
+import {Entypo, FontAwesome5, MaterialIcons} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {colorBase, secondColor} from 'enums/AppColors';
 import {UseIdPlayList} from 'hooks/UseAlbum/UseIdAlbum';
+import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {ScrollView} from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
+import Toast from 'react-native-toast-message';
+import TrackPlayer from 'react-native-track-player';
 import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
 import {TrackDownloader} from 'services/downloader/Downloader';
 import {getStreamingData} from 'services/streaming/StreamingTrack';
 import {useAlbumStore} from 'store/albumStore/albumStore';
@@ -17,7 +21,6 @@ import {useArtistStore} from 'store/artistStore/artistStore';
 import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
 import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
-import Toast from 'react-native-toast-message';
 
 type MenuItemProps = {
   icon: React.ReactNode;
@@ -34,7 +37,6 @@ const MenuItem: React.FC<MenuItemProps> = ({icon, label, style, onPress}) => (
 );
 
 export const MenuComponent: React.FC = () => {
-  const {bottomSheetModalRef} = useBottomSheetStore();
   const {trackInfo} = useModalTrack();
   const imageUrl = getThumbnailUrl(trackInfo?.thumbnails);
   // Movin betwen screens:
@@ -50,6 +52,15 @@ export const MenuComponent: React.FC = () => {
       text1: 'Download started',
       text2: 'Your track is now downloading ⬇️',
     });
+  };
+
+  const handlePlayTrack = async () => {
+    const promise = getStreamingData(trackInfo!.videoId);
+    const trackSelected = await promise;
+    await TrackPlayer.setQueue([trackSelected]);
+    let similarTracks = await SuggestionsTrackListFuntion(trackInfo!.videoId);
+    handlerPlay();
+    await TrackPlayer.add(similarTracks!);
   };
 
   return (
@@ -91,6 +102,12 @@ export const MenuComponent: React.FC = () => {
         </View>
       </View>
       <MenuItem
+        icon={<Entypo name="controller-play" size={30} color="#fff" />}
+        label="Play Track"
+        style={styles.reportItem}
+        onPress={() => handlePlayTrack()}
+      />
+      <MenuItem
         icon={<MaterialIcons name="download" size={26} color="#fff" />}
         label="Download Track"
         onPress={async () => {
@@ -99,6 +116,7 @@ export const MenuComponent: React.FC = () => {
           TrackDownloader(track.url, trackInfo!, track?.artwork!);
         }}
       />
+
       <MenuItem
         icon={<FontAwesome5 name="user-tag" size={24} color="#fff" />}
         label="Go to Artist"
@@ -115,17 +133,6 @@ export const MenuComponent: React.FC = () => {
           setAlbumsInfoSelected(albumInfo!);
           navigation.navigate('Album');
         }}
-      />
-      {/* <MenuItem
-        icon={<MaterialIcons name="audiotrack" size={26} color="#fff" />}
-        label="Simiar Tracks"
-      /> */}
-
-      <MenuItem
-        icon={<MaterialIcons name="cancel" size={26} color="red" />}
-        label="Close"
-        style={styles.reportItem}
-        onPress={() => bottomSheetModalRef.current?.close()}
       />
     </ScrollView>
   );
