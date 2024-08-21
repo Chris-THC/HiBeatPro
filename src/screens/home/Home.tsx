@@ -13,8 +13,8 @@ export const Home = () => {
   return (
     <View style={styles.homeContainer}>
       <StatusUpBar backgroundColor={colorBase} />
-      <NavBar />
       <ScrollView>
+        <NavBar />
         <TopArtist />
         <AlbumsResale />
         <RandomPlayList />
