@@ -1,5 +1,5 @@
 package com.hibeatii
-
+import org.devio.rn.splashscreen.SplashScreen; // splash screen
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -20,6 +20,7 @@ class MainActivity : ReactActivity() {
    */
   // Add React Navigation
   override fun onCreate(savedInstanceState: Bundle?) {
+    SplashScreen.show(this); // Add splash screen 
     super.onCreate(null)
   }
 
