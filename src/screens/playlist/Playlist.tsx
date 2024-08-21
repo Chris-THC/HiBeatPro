@@ -1,5 +1,4 @@
 import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
-import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 import {PlaylistHeader} from 'components/PlaylistComponents/components/PlaylistHeader';
 import {TrackListByPlaylist} from 'components/PlaylistComponents/components/TracklistByPlaylist';
 import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
@@ -53,7 +52,6 @@ export const Playlist = () => {
         <TrackListByPlaylist topSongs={playlist!} />
       </View>
       <ActiveTrackCrad />
-      <SheetModal />
     </View>
   );
 };

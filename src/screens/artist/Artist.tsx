@@ -1,7 +1,3 @@
-import React from 'react';
-import {ActivityIndicator, ScrollView, Text, View} from 'react-native';
-import FastImage from 'react-native-fast-image';
-import LinearGradient from 'react-native-linear-gradient';
 import {ActiveTrackCrad} from 'components/ActiveTrackCrad/ActiveTrackCrad';
 import {AlbumList} from 'components/ArtistComponents/components/AlbumList/AlbumList';
 import {ArtistList} from 'components/ArtistComponents/components/ArtistList/ArtistList';
@@ -9,9 +5,12 @@ import {TrackList} from 'components/ArtistComponents/components/TrackList/TrackL
 import {StatusUpBarTransparent} from 'components/StatusBar/StatusUpBarTransparent';
 import {colorBase} from 'enums/AppColors';
 import {useArtistInfoById} from 'hooks/UseYtMusic/UserYtMusic';
+import React from 'react';
+import {ActivityIndicator, ScrollView, Text, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
+import LinearGradient from 'react-native-linear-gradient';
 import {useArtistStore} from 'store/artistStore/artistStore';
 import styles from './styles/Artiststyles';
-import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 
 export const Artist = () => {
   const {artistId} = useArtistStore();
@@ -66,7 +65,6 @@ export const Artist = () => {
         </View>
       </ScrollView>
       <ActiveTrackCrad />
-      <SheetModal />
     </View>
   );
 };

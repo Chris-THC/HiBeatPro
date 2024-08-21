@@ -9,23 +9,11 @@ import {StyleSheet, View} from 'react-native';
 import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
 import {BottomSheetModalFC} from './BottomSheetModal';
 import {MenuComponent} from './MenuItem';
-import { useFocusEffect } from '@react-navigation/native';
 
 export const SheetModal: React.FC = () => {
   const {bottomSheetModalRef} = useBottomSheetStore();
-  const snapPoints = useMemo(() => ['1%', '40%'], []);
-
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     if (bottomSheetModalRef.current) {
-  //       bottomSheetModalRef.current?.present();
-  //     }
-  //   }, [bottomSheetModalRef])
-  // );
   
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
+  const snapPoints = useMemo(() => ['1%', '42%'], []);
 
   return (
     <BottomSheetModalProvider>
@@ -34,7 +22,6 @@ export const SheetModal: React.FC = () => {
           ref={bottomSheetModalRef}
           index={1}
           snapPoints={snapPoints}
-          onChange={handleSheetChanges}
           backgroundComponent={BottomSheetModalFC}>
           <BottomSheetView style={styles.contentContainer}>
             <MenuComponent />

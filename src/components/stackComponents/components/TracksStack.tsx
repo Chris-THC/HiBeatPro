@@ -3,7 +3,6 @@ import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
-import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import TrackPlayer, {Track} from 'react-native-track-player';
@@ -36,7 +35,6 @@ export const StackTracks: React.FC<PropsTrackList> = ({topSongs}) => {
           <Text style={styles.subTitleText}>Tracks into the stack</Text>
         </View>
       </View>
-      
 
       <FlashList
         data={topSongs}
@@ -52,7 +50,6 @@ export const StackTracks: React.FC<PropsTrackList> = ({topSongs}) => {
           />
         )}
       />
-      <SheetModal />
     </View>
   );
 };

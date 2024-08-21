@@ -1,6 +1,5 @@
-import { SheetModal } from 'components/BottomSheetModal/SheetModal';
-import { PlayerScreen } from 'components/PlayerComponents/view/PlayerScreen';
-import { colorBase } from 'enums/AppColors';
+import {PlayerScreen} from 'components/PlayerComponents/view/PlayerScreen';
+import {colorBase} from 'enums/AppColors';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
@@ -8,7 +7,6 @@ export const Player = () => {
   return (
     <View style={styles.contenPlayer}>
       <PlayerScreen />
-      <SheetModal />
     </View>
   );
 };

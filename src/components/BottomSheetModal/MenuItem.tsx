@@ -1,26 +1,30 @@
-import {Entypo, FontAwesome5, MaterialIcons} from '@expo/vector-icons';
+import {
+  FontAwesome5,
+  FontAwesome6,
+  MaterialIcons
+} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {colorBase, secondColor} from 'enums/AppColors';
-import {UseIdPlayList} from 'hooks/UseAlbum/UseIdAlbum';
-import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { colorBase, secondColor } from 'enums/AppColors';
+import { UseIdPlayList } from 'hooks/UseAlbum/UseIdAlbum';
+import { SuggestionsTrackListFuntion } from 'hooks/UseSimilarTracks/UseSimilarTracks';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {ScrollView} from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
 import Toast from 'react-native-toast-message';
 import TrackPlayer from 'react-native-track-player';
-import {RootStackParamList} from 'scrrenTypes/screenStack';
-import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
-import {TrackDownloader} from 'services/downloader/Downloader';
-import {getStreamingData} from 'services/streaming/StreamingTrack';
-import {useAlbumStore} from 'store/albumStore/albumStore';
-import {useArtistStore} from 'store/artistStore/artistStore';
-import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
-import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
-import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
+import { RootStackParamList } from 'scrrenTypes/screenStack';
+import { handlerPlay } from 'services/TrackPlayerService/TrackPlayerEvents';
+import { TrackDownloader } from 'services/downloader/Downloader';
+import { getStreamingData } from 'services/streaming/StreamingTrack';
+import { useAlbumStore } from 'store/albumStore/albumStore';
+import { useArtistStore } from 'store/artistStore/artistStore';
+import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
+import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
+import { getThumbnailUrl } from 'utils/selectImage/SelectImage';
 
 type MenuItemProps = {
   icon: React.ReactNode;
@@ -44,6 +48,7 @@ export const MenuComponent: React.FC = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {setArtistId} = useArtistStore();
   const {setAlbumsInfoSelected} = useAlbumStore();
+  const {bottomSheetModalRef} = useBottomSheetStore();
 
   //? Toast:
   const startedToast = () => {
@@ -102,8 +107,8 @@ export const MenuComponent: React.FC = () => {
         </View>
       </View>
       <MenuItem
-        icon={<Entypo name="controller-play" size={30} color="#fff" />}
-        label="Play Track"
+        icon={<FontAwesome6 name="itunes-note" size={26} color="#fff" />}
+        label="Similar Track"
         style={styles.reportItem}
         onPress={() => handlePlayTrack()}
       />
@@ -112,6 +117,7 @@ export const MenuComponent: React.FC = () => {
         label="Download Track"
         onPress={async () => {
           const track = await getStreamingData(trackInfo?.videoId!);
+          bottomSheetModalRef.current?.close();
           startedToast();
           TrackDownloader(track.url, trackInfo!, track?.artwork!);
         }}
@@ -123,6 +129,7 @@ export const MenuComponent: React.FC = () => {
         onPress={() => {
           setArtistId(trackInfo!.artist.artistId!);
           navigation.navigate('ArtistScren');
+          bottomSheetModalRef.current?.close();
         }}
       />
       <MenuItem
@@ -130,8 +137,13 @@ export const MenuComponent: React.FC = () => {
         label="Go to Album"
         onPress={async () => {
           const albumInfo = await UseIdPlayList(trackInfo!.album!.albumId!);
-          setAlbumsInfoSelected(albumInfo!);
-          navigation.navigate('Album');
+          if (albumInfo != null) {
+            setAlbumsInfoSelected(albumInfo!);
+            navigation.navigate('Album');
+            bottomSheetModalRef.current?.close();
+          } else {
+            console.log('Album not found');
+          }
         }}
       />
     </ScrollView>

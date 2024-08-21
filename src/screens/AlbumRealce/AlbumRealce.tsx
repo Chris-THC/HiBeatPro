@@ -11,7 +11,6 @@ import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
 import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 import {AlbumHeaderRealce} from './components/AlbumHeaderRealce';
 import {TrackListByAlbumRealce} from './components/TrackListRealce';
-import { SheetModal } from 'components/BottomSheetModal/SheetModal';
 
 export const AlbumRealce = () => {
   const {albumListStore} = useAlbumStore();
@@ -67,8 +66,6 @@ export const AlbumRealce = () => {
         <TrackListByAlbumRealce topSongs={albumData!} />
       </View>
       <ActiveTrackCrad />
-      <SheetModal />
-
     </View>
   );
 };
