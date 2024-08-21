@@ -5,11 +5,13 @@ import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
 import {colorBase} from 'enums/AppColors';
 import Navigation from 'navigation/Navigation';
 import {SetupPlayer} from 'services/TrackPlayerService/SetupPlayer';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState<any>(true);
 
   useEffect(() => {
+    // SplashScreen.hide();
     // Agrega un listener para detectar cambios en la conexión
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
@@ -19,6 +21,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    SplashScreen.hide();
     SetupPlayer();
   }, []);
 

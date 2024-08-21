@@ -6,7 +6,7 @@ import {colorBase} from 'enums/AppColors';
 import {usePlaylistPublic} from 'hooks/UsePublicPlaylist/UsePublicPlaylist';
 import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {usePlaylisStore} from 'store/playlistStore/playlistStore';
 import {ImageColorPalette} from 'utils/colors/ColorsFromImg';

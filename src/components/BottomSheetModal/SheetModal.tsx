@@ -12,16 +12,8 @@ import {MenuComponent} from './MenuItem';
 
 export const SheetModal: React.FC = () => {
   const {bottomSheetModalRef} = useBottomSheetStore();
-  //   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
-
-  //   const handlePresentModalPress = useCallback(() => {
-  //     bottomSheetModalRef.current?.present();
-  //   }, []);
-
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
+  
+  const snapPoints = useMemo(() => ['1%', '42%'], []);
 
   return (
     <BottomSheetModalProvider>
@@ -30,7 +22,6 @@ export const SheetModal: React.FC = () => {
           ref={bottomSheetModalRef}
           index={1}
           snapPoints={snapPoints}
-          onChange={handleSheetChanges}
           backgroundComponent={BottomSheetModalFC}>
           <BottomSheetView style={styles.contentContainer}>
             <MenuComponent />
@@ -43,8 +34,6 @@ export const SheetModal: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // padding: 24,
     justifyContent: 'center',
     backgroundColor: secondColor,
     position: 'relative',

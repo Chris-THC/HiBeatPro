@@ -9,6 +9,8 @@ import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
 import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
 import {getStreamingData} from 'services/streaming/StreamingTrack';
+import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
+import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
 
 interface PropsTrackList {
   topSongs: Song[];
@@ -25,6 +27,8 @@ const TrackCard: React.FC<PropTrackCard> = ({
   position,
   onTrackSelect,
 }) => {
+  const {presentModal} = useBottomSheetStore();
+  const {setTrackInfo} = useModalTrack();
   return (
     <RNBounceable
       onPress={() => onTrackSelect(position)}
@@ -46,7 +50,10 @@ const TrackCard: React.FC<PropTrackCard> = ({
         <Text style={styles.artistName}>{track.artist.name}</Text>
       </View>
       <RNBounceable
-        onPress={() => console.log('Opciones')}
+        onPress={() => {
+          presentModal();
+          setTrackInfo(track);
+        }}
         style={styles.actionsContainer}>
         <Entypo name="dots-three-horizontal" size={25} color="#fff" />
       </RNBounceable>

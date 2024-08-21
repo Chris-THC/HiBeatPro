@@ -17,6 +17,7 @@ import {RandomPlayListStack} from 'screens/randomPlaylist/RandomPlaylistStack';
 import {Search} from 'screens/search/Search';
 import {StackPlayer} from 'screens/stack/StackPlayer';
 import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {SheetModal} from 'components/BottomSheetModal/SheetModal';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -71,6 +72,7 @@ const Navigation = () => {
           <Stack.Screen name="AlbumsList" component={AlbumsList} />
           <Stack.Screen name="AlbumRealce" component={AlbumRealce} />
         </Stack.Navigator>
+        <SheetModal />
       </NavigationContainer>
     </GestureHandlerRootView>
   );

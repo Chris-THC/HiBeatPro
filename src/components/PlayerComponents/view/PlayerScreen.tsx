@@ -5,12 +5,11 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StatusUpBar} from 'components/StatusBar/StatusUpBar';
 import {colorBase} from 'enums/AppColors';
 import {AndroidColors} from 'interfaces/colorsInterface/Colors';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useActiveTrack} from 'react-native-track-player';
 import {RootStackParamList} from 'scrrenTypes/screenStack';
-import {coverImageDefault} from 'utils/assets/Images';
 import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
 import {ActionsAndOptions} from '../components/ActionsAndOptions';
 import {ProgressAndTrackInfo} from '../components/ProgressAndTrackInfo';
@@ -23,15 +22,24 @@ export const PlayerScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const getColorImage = useCallback(async () => {
-    const colorImg = await ImageColorPalette(
-      activeTrack?.artwork || coverImageDefault,
-    );
+  // const getColorImage = useCallback(async () => {
+  //   const colorImg = await ImageColorPalette(
+  //     activeTrack?.artwork || TrackImage,
+  //   );
+  //   setColorCover(colorImg);
+  // }, [activeTrack?.artwork]);
+
+  // useEffect(() => {
+  //   getColorImage();
+  // }, [activeTrack?.artwork]);
+
+  const GetColorImage = async () => {
+    const colorImg = await ImageColorPalette(activeTrack!.artwork!);
     setColorCover(colorImg);
-  }, [activeTrack?.artwork]);
+  };
 
   useEffect(() => {
-    getColorImage();
+    GetColorImage();
   }, [activeTrack?.artwork]);
 
   const GoBackComponent = () => {

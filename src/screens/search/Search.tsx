@@ -14,7 +14,6 @@ export const Search = () => {
       <SearchForm />
       <TopTabNavigator />
       <ActiveTrackCrad />
-      <SheetModal />
     </View>
   );
 };

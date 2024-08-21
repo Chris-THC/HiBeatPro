@@ -1,15 +1,17 @@
-import { create } from 'zustand'
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import { create } from 'zustand';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { RefObject } from 'react';
 
 interface BottomSheetState {
-  bottomSheetModalRef: React.RefObject<BottomSheetModal>;
+  bottomSheetModalRef: RefObject<BottomSheetModal>;
   presentModal: () => void;
 }
 
 export const useBottomSheetStore = create<BottomSheetState>((set, get) => ({
-  bottomSheetModalRef: {current: null},
+  bottomSheetModalRef: { current: null },
   presentModal: () => {
-    const {bottomSheetModalRef} = get();
+    const { bottomSheetModalRef } = get();
     bottomSheetModalRef.current?.present();
+    bottomSheetModalRef.current?.expand()
   },
 }));
