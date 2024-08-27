@@ -11,10 +11,10 @@ export default StyleSheet.create({
   artistMainTitle: {
     color: '#fff',
     fontSize: 25,
-    marginVertical: 5,
+    marginVertical: 2,
     paddingLeft: 10,
-    width: '50%',
-    fontFamily: 'Poppins',
-    fontWeight: 'semibold',
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: 'black',
+    lineHeight: 30,
   },
 });

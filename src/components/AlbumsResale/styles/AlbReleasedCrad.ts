@@ -10,15 +10,15 @@ export default StyleSheet.create({
   textArtistName: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: 'black',
     textAlign: 'center',
     marginTop: 8,
-    flexShrink: 1,
     textShadowColor: 'rgba(0, 0, 0, 1)', // Color de la sombra
     textShadowOffset: {width: -1, height: 1}, // Desplazamiento de la sombra
-    textShadowRadius: 10, // Radio de desenfoque de la sombra
+    textShadowRadius: 2, // Radio de desenfoque de la sombra
     backgroundColor: 'rgba(0, 0, 0, 0.2)', 
-    borderRadius: 5, // Radio de la sombra
+    borderRadius: 1, // Radio de la sombra
   },
   contentCard: {
     marginVertical: 6,

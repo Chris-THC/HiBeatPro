@@ -29,7 +29,7 @@ export const Playlist = () => {
 
   if (isLoading) {
     return (
-      <View style={styles.PublicPlaylistContent}>
+      <View style={styles.loadingScreen}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
@@ -61,5 +61,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colorBase,
     color: '#fff',
+  },
+  loadingScreen: {
+    flex: 1,
+    backgroundColor: colorBase,
+    color: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
   },
 });

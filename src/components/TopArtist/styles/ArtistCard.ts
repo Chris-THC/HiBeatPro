@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   artistName: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: 'Poppins-Medium',
     textAlign: 'center',
     marginHorizontal: 2,
     color: '#fff',
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     flexShrink: 1,
     textShadowColor: 'rgba(1, 0, 0, 1)',
     textShadowOffset: {width: -0.5, height: 1},
-    textShadowRadius: 2,
+    textShadowRadius: 5,
   },
   artistContentInfo: {
     flexDirection: 'row',

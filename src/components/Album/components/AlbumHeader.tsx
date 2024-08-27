@@ -28,11 +28,11 @@ export const AlbumHeader: React.FC<PropArtist> = ({albumInfoSelected}) => {
       <View style={styles.contentText}>
         <TextTicker
           style={styles.artistName}
-          duration={10000}
+          duration={30000}
           loop
           bounce={true}
-          repeatSpacer={50}
-          marqueeDelay={20}>
+          repeatSpacer={100}
+          marqueeDelay={500}>
           {albumInfoSelected!.name}
         </TextTicker>
 
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
   },
 
   artistName: {
-    fontSize: 25,
-    fontWeight: 'bold',
+    fontSize: 23,
+    fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
     marginHorizontal: 2,
     width: 210,
@@ -93,8 +93,10 @@ const styles = StyleSheet.create({
     textShadowRadius: 10,
   },
   artistArtist: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 17,
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: '600',
+    lineHeight: 22,
     textAlign: 'center',
     marginHorizontal: 2,
     color: '#fff',
@@ -106,7 +108,9 @@ const styles = StyleSheet.create({
   },
   yearText: {
     fontSize: 16,
+    fontFamily: 'Poppins-SemiBold',
     fontWeight: '500',
+    lineHeight: 22,
     textAlign: 'center',
     marginHorizontal: 2,
     color: '#fff',

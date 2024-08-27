@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   artistName: {
     fontSize: 19,
-    fontWeight: '600',
+    fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
     marginHorizontal: 2,
     color: '#fff',
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     textShadowColor: 'rgba(1, 0, 0, 1)',
     textShadowOffset: {width: -0.5, height: 1},
-    textShadowRadius: 2,
+    textShadowRadius: 5,
   },
   artistContentInfo: {
     flexDirection: 'row',

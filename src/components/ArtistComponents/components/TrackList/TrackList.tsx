@@ -9,8 +9,8 @@ import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
 import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
 import {getStreamingData} from 'services/streaming/StreamingTrack';
-import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
-import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
+import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
 
 interface PropsTrackList {
   topSongs: Song[];
@@ -133,18 +133,17 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 4, //40%
     justifyContent: 'center',
-    marginLeft: 10,
-    height: '100%',
+    marginLeft: 5,
   },
   trackName: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
   },
   artistName: {
     color: '#ccc',
-    fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 13,
   },
   actionsContainer: {
     flex: 1, // 20%
@@ -159,11 +158,13 @@ const styles = StyleSheet.create({
   },
 
   subTitleText: {
-    fontSize: 28,
+    fontSize: 25,
     color: '#E9EFFF',
-    fontWeight: '700',
     marginLeft: 5,
     marginVertical: 10,
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    lineHeight: 35,
   },
 
   btnPlayAll: {
@@ -175,8 +176,10 @@ const styles = StyleSheet.create({
   },
 
   btnPlayAllText: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    lineHeight: 35,
     textAlign: 'center',
     color: '#7791e4',
     flexShrink: 1,

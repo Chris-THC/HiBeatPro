@@ -140,12 +140,12 @@ const styles = StyleSheet.create({
   trackName: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
   },
   artistName: {
     color: '#ccc',
-    fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 13,
   },
   actionsContainer: {
     flex: 1, // 20%
@@ -162,9 +162,9 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 23,
     color: '#E9EFFF',
-    fontWeight: '700',
     marginLeft: 5,
-    marginVertical: 10,
+    fontFamily: 'Poppins-SemiBold',
+    lineHeight: 35,
   },
 
   btnPlayAll: {
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
 
   btnPlayAllText: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
     color: '#fff',
     flexShrink: 1,

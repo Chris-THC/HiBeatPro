@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subTitleText: {
-    fontSize: 22,
+    fontSize: 24,
     color: '#fff',
-    fontWeight: '600',
-    marginLeft: 5,
+    fontFamily: 'Poppins',
+    fontWeight:"bold",
     marginVertical: 5,
   },
   btnGoBack: {
