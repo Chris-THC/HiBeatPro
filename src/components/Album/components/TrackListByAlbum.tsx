@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   artistName: {
     color: '#ccc',
     fontFamily: 'Poppins-Regular',
-    fontSize: 13,
+    fontSize: 14,
   },
   actionsContainer: {
     flex: 1, // 20%

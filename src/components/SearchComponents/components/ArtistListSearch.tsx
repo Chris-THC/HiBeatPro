@@ -114,9 +114,10 @@ const styles = StyleSheet.create({
   },
 
   artistName: {
-    fontSize: 21,
-    fontWeight: '400',
+    fontSize: 19,
+    fontFamily: 'Poppins-Normal',
     textAlign: 'center',
+    fontWeight: '500',
     marginHorizontal: 2,
     color: '#fff',
     marginTop: 8,

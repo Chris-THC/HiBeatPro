@@ -1,17 +1,17 @@
-import { Entypo } from '@expo/vector-icons';
+import {Entypo} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import { FlashList } from '@shopify/flash-list';
-import { SuggestionsTrackListFuntion } from 'hooks/UseSimilarTracks/UseSimilarTracks';
-import { SongDetailed } from 'interfaces/SerachInterface/SearchTracks';
+import {FlashList} from '@shopify/flash-list';
+import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
+import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import TrackPlayer from 'react-native-track-player';
-import { handlerPlay } from 'services/TrackPlayerService/TrackPlayerEvents';
-import { getStreamingData } from 'services/streaming/StreamingTrack';
-import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
-import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
-import { formatToSeconds } from 'utils/time/SecondsToMinutes';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
+import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
+import {formatToSeconds} from 'utils/time/SecondsToMinutes';
 
 interface PropsTrackList {
   topSongs: SongDetailed[];
@@ -143,12 +143,12 @@ const styles = StyleSheet.create({
   trackName: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
   },
   artistName: {
     color: '#ccc',
+    fontFamily: 'Poppins-Regular',
     fontSize: 14,
-    fontWeight: '500',
   },
   actionsContainer: {
     flex: 1, // 20%
@@ -165,9 +165,10 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 22,
     color: '#E9EFFF',
-    fontWeight: '600',
-    marginLeft: 5,
-    marginVertical: 10,
+    marginLeft: 8,
+    marginTop: 8,
+    fontFamily: 'Poppins-SemiBold',
+    lineHeight: 38,
   },
 
   btnPlayAll: {
@@ -180,7 +181,8 @@ const styles = StyleSheet.create({
 
   btnPlayAllText: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Poppins-SemiBold',
+    paddingTop: 10,
     textAlign: 'center',
     color: '#7791e4',
     flexShrink: 1,

@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
   trackName: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
   },
   artistName: {
     color: '#ccc',
+    fontFamily: 'Poppins-Regular',
     fontSize: 14,
-    fontWeight: '500',
   },
   actionsContainer: {
     flex: 1, // 20%

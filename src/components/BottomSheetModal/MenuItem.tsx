@@ -1,30 +1,26 @@
-import {
-  FontAwesome5,
-  FontAwesome6,
-  MaterialIcons
-} from '@expo/vector-icons';
+import {FontAwesome5, FontAwesome6, MaterialIcons} from '@expo/vector-icons';
 import RNBounceable from '@freakycoder/react-native-bounceable';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colorBase, secondColor } from 'enums/AppColors';
-import { UseIdPlayList } from 'hooks/UseAlbum/UseIdAlbum';
-import { SuggestionsTrackListFuntion } from 'hooks/UseSimilarTracks/UseSimilarTracks';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {colorBase, secondColor} from 'enums/AppColors';
+import {UseIdPlayList} from 'hooks/UseAlbum/UseIdAlbum';
+import {SuggestionsTrackListFuntion} from 'hooks/UseSimilarTracks/UseSimilarTracks';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import TextTicker from 'react-native-text-ticker';
 import Toast from 'react-native-toast-message';
 import TrackPlayer from 'react-native-track-player';
-import { RootStackParamList } from 'scrrenTypes/screenStack';
-import { handlerPlay } from 'services/TrackPlayerService/TrackPlayerEvents';
-import { TrackDownloader } from 'services/downloader/Downloader';
-import { getStreamingData } from 'services/streaming/StreamingTrack';
-import { useAlbumStore } from 'store/albumStore/albumStore';
-import { useArtistStore } from 'store/artistStore/artistStore';
-import { useBottomSheetStore } from 'store/modalStore/useBottomSheetStore';
-import { useModalTrack } from 'store/sheetModalTrack/ModalTrack';
-import { getThumbnailUrl } from 'utils/selectImage/SelectImage';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {handlerPlay} from 'services/TrackPlayerService/TrackPlayerEvents';
+import {TrackDownloader} from 'services/downloader/Downloader';
+import {getStreamingData} from 'services/streaming/StreamingTrack';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {useArtistStore} from 'store/artistStore/artistStore';
+import {useBottomSheetStore} from 'store/modalStore/useBottomSheetStore';
+import {useModalTrack} from 'store/sheetModalTrack/ModalTrack';
+import {getThumbnailUrl} from 'utils/selectImage/SelectImage';
 
 type MenuItemProps = {
   icon: React.ReactNode;
@@ -61,6 +57,7 @@ export const MenuComponent: React.FC = () => {
 
   const handlePlayTrack = async () => {
     const promise = getStreamingData(trackInfo!.videoId);
+    bottomSheetModalRef.current?.close();
     const trackSelected = await promise;
     await TrackPlayer.setQueue([trackSelected]);
     let similarTracks = await SuggestionsTrackListFuntion(trackInfo!.videoId);
@@ -85,10 +82,11 @@ export const MenuComponent: React.FC = () => {
           <TextTicker
             style={{
               color: '#fff',
-              fontSize: 18,
+              fontSize: 16,
               marginBottom: 5,
+              fontFamily: 'Poppins',
             }}
-            duration={15000}
+            duration={18000}
             loop
             bounce={true}
             repeatSpacer={20}
@@ -96,7 +94,11 @@ export const MenuComponent: React.FC = () => {
             {trackInfo?.name}
           </TextTicker>
           <TextTicker
-            style={{color: '#ccc', fontSize: 15}}
+            style={{
+              color: '#ccc',
+              fontSize: 14,
+              fontFamily: 'Poppins',
+            }}
             duration={15000}
             loop
             bounce={true}
@@ -107,13 +109,27 @@ export const MenuComponent: React.FC = () => {
         </View>
       </View>
       <MenuItem
-        icon={<FontAwesome6 name="itunes-note" size={26} color="#fff" />}
+        icon={
+          <FontAwesome6
+            name="itunes-note"
+            size={26}
+            style={styles.iconColor}
+            color="#fff"
+          />
+        }
         label="Similar Track"
         style={styles.reportItem}
         onPress={() => handlePlayTrack()}
       />
       <MenuItem
-        icon={<MaterialIcons name="download" size={26} color="#fff" />}
+        icon={
+          <MaterialIcons
+            name="download"
+            style={styles.iconColor}
+            size={26}
+            color="#fff"
+          />
+        }
         label="Download Track"
         onPress={async () => {
           const track = await getStreamingData(trackInfo?.videoId!);
@@ -124,7 +140,14 @@ export const MenuComponent: React.FC = () => {
       />
 
       <MenuItem
-        icon={<FontAwesome5 name="user-tag" size={24} color="#fff" />}
+        icon={
+          <FontAwesome5
+            style={styles.iconColor}
+            name="user-tag"
+            size={24}
+            color="#fff"
+          />
+        }
         label="Go to Artist"
         onPress={() => {
           setArtistId(trackInfo!.artist.artistId!);
@@ -133,7 +156,14 @@ export const MenuComponent: React.FC = () => {
         }}
       />
       <MenuItem
-        icon={<MaterialIcons name="album" size={26} color="#fff" />}
+        icon={
+          <MaterialIcons
+            style={styles.iconColor}
+            name="album"
+            size={26}
+            color="#fff"
+          />
+        }
         label="Go to Album"
         onPress={async () => {
           const albumInfo = await UseIdPlayList(trackInfo!.album!.albumId!);
@@ -181,8 +211,9 @@ const styles = StyleSheet.create({
   },
   menuItemText: {
     marginLeft: 10,
-    fontSize: 17,
+    fontSize: 15,
     color: '#fff',
+    fontFamily: 'Poppins-Regular',
   },
   reportItem: {
     paddingVertical: 15,
@@ -191,5 +222,12 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     borderRadius: 8,
+  },
+  iconColor: {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
   },
 });

@@ -2,15 +2,15 @@ import RNBounceable from '@freakycoder/react-native-bounceable';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FlashList} from '@shopify/flash-list';
-import { colorBase } from 'enums/AppColors';
-import { AlbumSearch } from 'interfaces/AlbumSearch/AlbumSearch';
-import { AndroidColors } from 'interfaces/colorsInterface/Colors';
+import {colorBase} from 'enums/AppColors';
+import {AlbumSearch} from 'interfaces/AlbumSearch/AlbumSearch';
+import {AndroidColors} from 'interfaces/colorsInterface/Colors';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { RootStackParamList } from 'scrrenTypes/screenStack';
-import { useAlbumStore } from 'store/albumStore/albumStore';
-import { ImageColorPalette } from 'utils/colors/ColorsFromImg';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useAlbumStore} from 'store/albumStore/albumStore';
+import {ImageColorPalette} from 'utils/colors/ColorsFromImg';
 
 interface PropArtist {
   albumArray: AlbumSearch[];
@@ -126,19 +126,21 @@ const styles = StyleSheet.create({
   },
 
   artistName: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 19,
+    fontFamily: 'Poppins-Normal',
     textAlign: 'center',
+    fontWeight: '500',
     marginHorizontal: 2,
     color: '#fff',
     marginTop: 8,
     flexShrink: 1,
     textShadowColor: 'rgba(1, 0, 0, 1)',
     textShadowOffset: {width: -0.5, height: 1},
-    textShadowRadius: 10,
+    textShadowRadius: 2,
   },
   artistArtist: {
-    fontSize: 18,
+    fontSize: 16,
+    fontFamily: 'Poppins-Normal',
     fontWeight: '500',
     textAlign: 'center',
     marginHorizontal: 2,
@@ -150,7 +152,8 @@ const styles = StyleSheet.create({
     textShadowRadius: 3,
   },
   yearText: {
-    fontSize: 15,
+    fontSize: 14,
+    fontFamily: 'Poppins',
     textAlign: 'center',
     marginHorizontal: 2,
     color: '#fff',

@@ -22,17 +22,6 @@ export const PlayerScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  // const getColorImage = useCallback(async () => {
-  //   const colorImg = await ImageColorPalette(
-  //     activeTrack?.artwork || TrackImage,
-  //   );
-  //   setColorCover(colorImg);
-  // }, [activeTrack?.artwork]);
-
-  // useEffect(() => {
-  //   getColorImage();
-  // }, [activeTrack?.artwork]);
-
   const GetColorImage = async () => {
     const colorImg = await ImageColorPalette(activeTrack!.artwork!);
     setColorCover(colorImg);
