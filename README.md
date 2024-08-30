@@ -9,7 +9,7 @@ It's just an application I made to learn React Native, while listening and downl
 Screenshots of the application working
 
 <div align="center" style="margin-bottom: 8px;">
-  <img src="./assets/images/img2.png" alt="IMG2" width="200" />
+  <img src="./assets/images/img1.png" alt="IMG2" width="200" />
   <img src="./assets/images/img3.png" alt="IMG3" width="200" />
   <img src="./assets/images/img4.png" alt="IMG4" width="200" />
   <img src="./assets/images/img5.png" alt="IMG5" width="200" />
