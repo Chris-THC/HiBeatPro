@@ -1,79 +1,43 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+![Logo](./assets/images/banner.png)
 
-# Getting Started
+It's just an application I made to learn React Native, while I listening and download music and maybe there are errors that I have not contemplated
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Demo
 
-## Step 1: Start the Metro Server
+Screenshots of the application working
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+<div align="center" style="margin-bottom: 8px;">
+  <img src="./assets/images/img3.png" alt="IMG3" width="200" />
+  <img src="./assets/images/img4.png" alt="IMG4" width="200" />
+  <img src="./assets/images/img5.png" alt="IMG5" width="200" />
+  <img src="./assets/images/img6.png" alt="IMG6" width="200" />
+</div>
 
-To start Metro, run the following command from the _root_ of your React Native project:
+<div align="center" style="margin-bottom: 8px;">
+  <img src="./assets/images/img7.png" alt="IMG7" width="200" />
+  <img src="./assets/images/img8.png" alt="IMG8" width="200" />
+  <img src="./assets/images/img10.png" alt="IMG10" width="200" />
+  <img src="./assets/images/img11.png" alt="IMG10" width="200" />
+</div>
 
-```bash
-# using npm
-npm start
+## Features
 
-# OR using Yarn
-yarn start
-```
+- Listen to music
+- Download track
+- Search by artist, album or playlist
+- Background listening
 
-## Step 2: Start your Application
+## Download APK
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+[![ImgDownload](./assets/images/img-Download.png)](https://drive.google.com/uc?export=download&id=1uYXaT-vfs7CrslJsTBxIbVmVTQ2SoCQV)
 
-### For Android
+## Open Source and Disclaimer
 
-```bash
-# using npm
-npm run android
+This software is **open source** and is available under the [MIT License](LICENSE). You are free to use and modify this software in accordance with the terms of the license.
 
-# OR using Yarn
-yarn android
-```
+### Disclaimer
 
-### For iOS
+The author of this software is not responsible for any misuse or consequences resulting from improper use of the software. The software is provided "as is," without warranties of any kind, either express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. The use of this software is at your own risk and responsibility.
 
-```bash
-# using npm
-npm run ios
+It is important that users comply with applicable laws and regulations when using this software.
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
