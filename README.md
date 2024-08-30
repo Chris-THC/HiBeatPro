@@ -22,19 +22,15 @@ Screenshots of the application working
 
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Listen to music
+- Download track
+- Search by artist, album or playlist
+- Background listening
 
-## Installation
+## Download APK
 
-Install my-project with npm
+[![ImgDownload](./assets/images/banner.png)](https://drive.google.com/uc?export=download&id=1uYXaT-vfs7CrslJsTBxIbVmVTQ2SoCQV)
 
-```bash
-  npm install my-project
-  cd my-project
-```
 
 ## Deployment
 
