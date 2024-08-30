@@ -1,35 +1,22 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
-# Getting Started
-
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-
 # HiBeat!
+![Logo](./assets/images/banner.png)
 
 It's just an application I made to learn React Native, while listening and download music.
 
-
-![Logo](./assets/images/banner.png)
-
-
 ## Demo
+Screenshots of the application working
 
-Insert gif or link to demo
+![IMG1](./assets/images/img1.png)
+![IMG2](./assets/images/img2.png)
+![IMG3](./assets/images/img3.png)
+![IMG4](./assets/images/img4.png)
+![IMG5](./assets/images/img5.png)
+![IMG6](./assets/images/img6.png)
+![IMG7](./assets/images/img7.png)
+![IMG8](./assets/images/img8.png)
+![IMG9](./assets/images/img9.png)
+![IMG10](./assets/images/img10.png)
+
 
 
 ## Features
