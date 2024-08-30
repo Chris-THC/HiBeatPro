@@ -1,5 +1,3 @@
-# HiBeat!
-
 ![Logo](./assets/images/banner.png)
 
 It's just an application I made to learn React Native, while listening and download music.
