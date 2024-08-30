@@ -24,7 +24,7 @@ yarn start
 It's just an application I made to learn React Native, while listening and download music.
 
 
-![Logo](https://drive.google.com/file/d/1fuqasPuBjJu5HhRi6nzbMjxnSEuilkN7/view)
+![Logo](./assets/images/banner.png)
 
 
 ## Demo
