@@ -28,6 +28,6 @@ Screenshots of the application working
 - Background listening
 
 ## Download APK
-Click on image
+
 [![ImgDownload](./assets/images/img-Download.png)](https://drive.google.com/uc?export=download&id=1uYXaT-vfs7CrslJsTBxIbVmVTQ2SoCQV)
 
