@@ -1,8 +1,107 @@
+// import {FFmpegKit} from 'ffmpeg-kit-react-native';
+// import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
+// import {Platform} from 'react-native';
+// import RNFetchBlob from 'rn-fetch-blob';
+// import {getDownloadPermissionAndroid} from './PermissionAndroid';
+// import {Song} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
+// import Toast from 'react-native-toast-message';
+
+// const successToast = () => {
+//   Toast.show({
+//     type: 'success',
+//     text1: 'Download complete',
+//     text2: 'Your track has been successfully downloaded ✅',
+//   });
+// };
+
+// const errorToast = () => {
+//   Toast.show({
+//     type: 'error',
+//     text1: 'Download failed',
+//     text2: 'There was an error downloading the track ⚠️',
+//   });
+// };
+
+// const downloadFile = async (
+//   format: string,
+//   trackInfo: SongDetailed | Song,
+//   trckImg: string,
+// ) => {
+//   try {
+//     const { config, fs } = RNFetchBlob;
+//     const safeName = trackInfo?.name.replace(/[^a-zA-Z0-9]/g, '_');
+//     const safeArtist = trackInfo?.artist.name.replace(/[^a-zA-Z0-9]/g, '_');
+
+//     let destinationFilePath;
+//     if (Platform.OS === 'android' && Platform.Version >= 29) {
+//       // Usa MediaStore en Android 10+ para guardar el archivo
+//       const { DownloadDir } = fs.dirs;
+//       destinationFilePath = `${DownloadDir}/${safeName}_${safeArtist}.m4a`;
+//     } else {
+//       // Método antiguo para versiones anteriores a Android 10
+//       destinationFilePath = `${RNFetchBlob.fs.dirs.DownloadDir}/${safeName}_${safeArtist}.m4a`;
+//     }
+
+//     const tempFilePath = `${destinationFilePath}-temp.m4a`; // Archivo temporal
+//     const tempImagePath = `${RNFetchBlob.fs.dirs.DownloadDir}/cover.jpg`; // Ruta temporal para la imagen
+
+//     // Descargar la imagen de la URL y guardarla localmente
+//     await RNFetchBlob.config({ fileCache: true, path: tempImagePath }).fetch('GET', trckImg);
+
+//     const configOptions = {
+//       fileCache: true,
+//       addAndroidDownloads: {
+//         useDownloadManager: true,
+//         notification: true,
+//         path: destinationFilePath,
+//         description: 'Downloading file...',
+//       }
+//     };
+
+//     await config(configOptions)
+//       .fetch('GET', format)
+//       .progress((received, total) => {
+//         console.log(`Download progress: ${Math.floor((received / total) * 100)}%`);
+//       });
+
+//     // Agregar metadatos y la imagen de portada al archivo AAC utilizando FFmpegKit
+//     const ffmpegCommand = `-y -i "${destinationFilePath}" -i "${tempImagePath}" -metadata Title="${trackInfo?.name}" -metadata Artist="${trackInfo?.artist.name}" -metadata Album="${trackInfo?.album?.name}" -map 0 -map 1 -c copy -disposition:v:0 attached_pic "${tempFilePath}"`;
+
+//     const session = await FFmpegKit.execute(ffmpegCommand);
+//     const returnCode = await session.getReturnCode();
+
+//     if (returnCode.isValueSuccess()) {
+//       // Reemplazar el archivo original con el archivo temporal
+//       await RNFetchBlob.fs.unlink(destinationFilePath);
+//       await RNFetchBlob.fs.mv(tempFilePath, destinationFilePath);
+
+//       successToast();
+//     } else {
+//       errorToast();
+//     }
+
+//     // Limpiar archivo de imagen temporal
+//     await RNFetchBlob.fs.unlink(tempImagePath);
+//   } catch (error) {
+//     console.error('Error during download:', error);
+//     errorToast();
+//   }
+// };
+
+// export const TrackDownloader = (format: string, trackInfo: SongDetailed | Song, trckImg: string) => {
+//   if (Platform.OS === 'android') {
+//     getDownloadPermissionAndroid().then(granted => {
+//       if (granted) {
+//         downloadFile(format, trackInfo, trckImg);
+//       }
+//     });
+//   }
+// };
+
 import {FFmpegKit} from 'ffmpeg-kit-react-native';
 import {SongDetailed} from 'interfaces/SerachInterface/SearchTracks';
 import {Platform} from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
-import {getDownloadPermissionAndroid} from './PermissionAndroid';
 import {Song} from 'interfaces/ArtistInterface/YTMuiscArtistInterface';
 import Toast from 'react-native-toast-message';
 
@@ -27,20 +126,31 @@ const downloadFile = async (
   trackInfo: SongDetailed | Song,
   trckImg: string,
 ) => {
-  const destinationPath = RNFetchBlob.fs.dirs.DownloadDir;
-  const safeName = trackInfo?.name.replace(/[^a-zA-Z0-9]/g, '_');
-  const safeArtist = trackInfo?.artist.name.replace(/[^a-zA-Z0-9]/g, '_');
-  const destinationFilePath = `${destinationPath}/${safeName}_${safeArtist}.m4a`;
-  const tempFilePath = `${destinationPath}/${safeName}_${safeArtist}-temp.m4a`; // Archivo temporal
-  const tempImagePath = `${destinationPath}/cover.jpg`; // Ruta temporal para la imagen
   try {
-    // Descargar la imagen de la URL y guardarla localmente
+    const {fs} = RNFetchBlob;
+    const safeName = trackInfo?.name.replace(/[^a-zA-Z0-9]/g, '_');
+    const safeArtist = trackInfo?.artist.name.replace(/[^a-zA-Z0-9]/g, '_');
+
+    // Ruta de la carpeta en la memoria interna
+    const directoryPath = `${fs.dirs.DownloadDir}`;
+
+    // Verifica si la carpeta existe, si no, la crea
+    const isDir = await fs.isDir(directoryPath);
+    if (!isDir) {
+      await fs.mkdir(directoryPath);
+    }
+
+    const destinationFilePath = `${directoryPath}/${safeName}_${safeArtist}.m4a`;
+    const tempFilePath = `${destinationFilePath}-temp.m4a`; // Archivo temporal
+    const tempImagePath = `${directoryPath}/cover.jpg`; // Ruta temporal para la imagen
+
+    // Descargar la imagen de la URL y guardarla en la carpeta HiBeatsTracks
     await RNFetchBlob.config({fileCache: true, path: tempImagePath}).fetch(
       'GET',
       trckImg,
     );
 
-    const config = RNFetchBlob.config({
+    const configOptions = {
       addAndroidDownloads: {
         useDownloadManager: true,
         mime: 'audio/aac',
@@ -48,21 +158,24 @@ const downloadFile = async (
         path: destinationFilePath,
         description: 'Download file...',
         mediaScannable: true,
+        fileCache: true,
       },
-    });
+    };
+    // const configOptions = {
+    //   fileCache: true,
+    //   path: destinationFilePath,
+    //   description: 'Downloading file...',
+    //   notification: true,
+    // };
 
-    await config
+    // Descargar el archivo de audio
+    await RNFetchBlob.config(configOptions)
       .fetch('GET', format)
-      .progress({count: 10}, (received, total) => {
-        const percentage = Math.floor((received / total) * 100);
-        console.log(`Progreso de la descarga: ${percentage}%`);
+      .progress((received, total) => {
+        console.log(
+          `Download progress: ${Math.floor((received / total) * 100)}%`,
+        );
       });
-
-    if (Platform.OS === 'android') {
-      await RNFetchBlob.fs.scanFile([
-        {path: destinationFilePath, mime: 'audio/aac'},
-      ]);
-    }
 
     // Agregar metadatos y la imagen de portada al archivo AAC utilizando FFmpegKit
     const ffmpegCommand = `-y -i "${destinationFilePath}" -i "${tempImagePath}" -metadata Title="${
@@ -72,25 +185,23 @@ const downloadFile = async (
     }" -map 0 -map 1 -c copy -disposition:v:0 attached_pic "${tempFilePath}"`;
 
     const session = await FFmpegKit.execute(ffmpegCommand);
-
     const returnCode = await session.getReturnCode();
 
     if (returnCode.isValueSuccess()) {
       // Reemplazar el archivo original con el archivo temporal
-      await RNFetchBlob.fs.unlink(destinationFilePath); // Eliminar el archivo original
-      await RNFetchBlob.fs.mv(tempFilePath, destinationFilePath); // Renombrar el archivo temporal
+      await RNFetchBlob.fs.unlink(destinationFilePath);
+      await RNFetchBlob.fs.mv(tempFilePath, destinationFilePath);
 
       successToast();
     } else {
-      await RNFetchBlob.fs.unlink(tempImagePath);
       errorToast();
     }
 
     // Limpiar archivo de imagen temporal
     await RNFetchBlob.fs.unlink(tempImagePath);
   } catch (error) {
+    console.error('Error during download:', error);
     errorToast();
-    await RNFetchBlob.fs.unlink(tempImagePath);
   }
 };
 
@@ -100,10 +211,6 @@ export const TrackDownloader = (
   trckImg: string,
 ) => {
   if (Platform.OS === 'android') {
-    getDownloadPermissionAndroid().then(granted => {
-      if (granted) {
-        downloadFile(format, trackInfo, trckImg);
-      }
-    });
+    downloadFile(format, trackInfo, trckImg);
   }
 };
