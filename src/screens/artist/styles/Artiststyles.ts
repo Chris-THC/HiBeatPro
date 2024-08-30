@@ -24,19 +24,23 @@ export default StyleSheet.create({
   },
   artistNameText: {
     fontSize: 35,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
+    lineHeight: 40,
     color: '#fff',
     flexShrink: 1,
     textShadowColor: 'rgba(1, 0, 0, 1)',
     textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 15,
+    textShadowRadius: 2,
   },
   subTitleText: {
-    fontSize: 28,
+    fontSize: 25,
     color: '#fff',
-    fontWeight: '700',
     marginLeft: 10,
     marginVertical: 10,
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    lineHeight: 35,
   },
   // Styles linea gradiant
   linearGradient: {
@@ -44,6 +48,6 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: 490,
+    height: 350,
   },
 });

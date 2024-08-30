@@ -25,7 +25,8 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginTop: 8,
-    fontWeight: '700',
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
     marginHorizontal: 3,
   },
   playIconOnImage: {

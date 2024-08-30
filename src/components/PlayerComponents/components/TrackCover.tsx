@@ -15,7 +15,6 @@ export const TrackCover: React.FC<PropsTrack> = ({cover}) => {
         source={
           cover ? {uri: cover, priority: FastImage.priority.high} : TrackImage
         }
-        resizeMode={FastImage.resizeMode.cover}
       />
     </View>
   );
@@ -23,8 +22,8 @@ export const TrackCover: React.FC<PropsTrack> = ({cover}) => {
 
 const styles = StyleSheet.create({
   imgStyles: {
-    height: 350,
-    width: 350,
+    width: 365,
+    height: 365,
     borderRadius: 10,
   },
 });

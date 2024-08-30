@@ -1,7 +1,10 @@
 import Slider from '@react-native-community/slider';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import TrackPlayer, {useActiveTrack, useProgress} from 'react-native-track-player';
+import TrackPlayer, {
+  useActiveTrack,
+  useProgress,
+} from 'react-native-track-player';
 import TextTicker from 'react-native-text-ticker';
 import {formatToSeconds} from 'utils/time/SecondsToMinutes';
 
@@ -44,7 +47,7 @@ export const ProgressAndTrackInfo: React.FC<PropsColors> = ({
       <View style={styles.containerText}>
         <TextTicker
           style={styles.artistName}
-          duration={10000}
+          duration={50000}
           loop
           bounce={true}
           repeatSpacer={80}
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
   },
   textSeconds: {
     color: '#fff',
-    fontWeight: '700',
+    fontFamily: 'Poppins-SemiBold',
     fontSize: 15,
   },
   contentTextSeconds: {
@@ -91,16 +94,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   artistName: {
-    fontSize: 24,
+    fontSize: 22,
+    fontFamily: 'Poppins-SemiBold',
     color: '#fff',
-    fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 10,
   },
   titleTrack: {
-    fontSize: 16,
     color: '#ccc',
-    fontWeight: '600',
+    fontSize: 17,
+    fontWeight:"500",
+    fontFamily: 'Poppins',
     marginVertical: 8,
     textAlign: 'center',
   },

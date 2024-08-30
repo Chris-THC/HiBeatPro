@@ -5,10 +5,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FontAwesome6} from '@expo/vector-icons';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {PlaylistCard} from '../components/PlaylistCard';
-import { useRandomPlaylist } from 'hooks/UsePlaylist/UsePlaylist';
-import { RootStackParamList } from 'scrrenTypes/screenStack';
-import { useRandomPlaylistStore } from 'store/randomPlatlistStore/randomPlaylistStore';
-import { PlayListLoader } from 'utils/skeleton/loaders/PlayListLoader/PlayListLoader';
+import {useRandomPlaylist} from 'hooks/UsePlaylist/UsePlaylist';
+import {RootStackParamList} from 'scrrenTypes/screenStack';
+import {useRandomPlaylistStore} from 'store/randomPlatlistStore/randomPlaylistStore';
+import {PlayListLoader} from 'utils/skeleton/loaders/PlayListLoader/PlayListLoader';
 
 export const RandomPlayList = () => {
   const {isLoading, data: albumsArray, isError} = useRandomPlaylist();
@@ -52,7 +52,7 @@ export const RandomPlayList = () => {
       <ScrollView horizontal={true}>
         <View style={styles.mainContainer}>
           {albumsArray!.slice(0, 10).map((albumItem, index) => (
-            <View style={{marginHorizontal: 8}} key={index}>
+            <View style={{marginHorizontal: 8, marginBottom: 10}} key={index}>
               <PlaylistCard playlist={albumItem} />
             </View>
           ))}

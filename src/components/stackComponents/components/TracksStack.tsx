@@ -62,9 +62,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subTitleText: {
-    fontSize: 22,
+    fontSize: 23,
     color: '#fff',
-    fontWeight: '600',
+    fontFamily: 'Poppins-SemiBold',
     marginLeft: 5,
     marginVertical: 5,
   },

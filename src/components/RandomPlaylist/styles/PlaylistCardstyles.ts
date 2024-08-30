@@ -9,7 +9,7 @@ export default StyleSheet.create({
     width: 200,
     borderRadius: 10,
     marginVertical: 5,
-    marginHorizontal: 5,
+    marginHorizontal: 3,
     borderWidth: 1,
   },
   imageCrad: {
@@ -25,8 +25,9 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginTop: 8,
-    fontWeight: '700',
     marginHorizontal: 3,
+    fontFamily: 'Poppins-Bold',
+    lineHeight: 40,
   },
   playIconOnImage: {
     zIndex: 1,

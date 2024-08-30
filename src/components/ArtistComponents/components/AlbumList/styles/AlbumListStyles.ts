@@ -22,11 +22,12 @@ export default StyleSheet.create({
   },
   titleCrad: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 17,
     textAlign: 'center',
     marginTop: 8,
-    fontWeight: '700',
     marginHorizontal: 3,
+    fontFamily: 'Poppins-Bold',
+    lineHeight: 35,
   },
   playIconOnImage: {
     zIndex: 1,
