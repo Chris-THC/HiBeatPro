@@ -1,6 +1,6 @@
 ![Logo](./assets/images/banner.png)
 
-It's just an application I made to learn React Native, while listening and download music.
+It's just an application I made to learn React Native, while I listening and download music and maybe there are errors that I have not contemplated
 
 ## Demo
 
