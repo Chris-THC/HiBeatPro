@@ -30,7 +30,7 @@ Screenshots of the application working
 
 ## Download APK
 
-[![ImgDownload](./assets/images/img-Download.png)](https://drive.google.com/uc?export=download&id=1uYXaT-vfs7CrslJsTBxIbVmVTQ2SoCQV)
+[![ImgDownload](./assets/images/img-Download.png)](https://drive.google.com/file/d/1l3PIVy2aESyNR0gO87SoGDgfQk5Qe-rZ/view?usp=sharing)
 
 ## Open Source and Disclaimer
 
